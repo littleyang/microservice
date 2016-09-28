@@ -1,4 +1,4 @@
-package com.micro.service.Greeting;
+package com.micro.service.greeting;
 
 /**
  * @description:

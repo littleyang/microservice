@@ -1,6 +1,6 @@
-package com.micro.service.GreetingController;
+package com.micro.service.controller;
 
-import com.micro.service.Greeting.Greeting;
+import com.micro.service.greeting.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
