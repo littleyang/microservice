@@ -6,7 +6,7 @@
 	<groupId>com.didispace</groupId>
 	<artifactId>compute-service</artifactId>
 	<version>1.0.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>compute-service</name>
 	<description>Spring Cloud project</description>
@@ -25,13 +25,13 @@
 
 	<dependencies>
 
-		<!--
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		-->
+
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
