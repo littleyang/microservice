@@ -1,6 +1,9 @@
 package com.micro.service.member.consumer;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @description:
@@ -10,5 +13,10 @@ import org.springframework.cloud.netflix.feign.FeignClient;
  */
 
 @FeignClient("member")
-public class MemberClient {
+@Component
+public interface MemberClient {
+
+    @RequestMapping(method = RequestMethod.GET,value = "/index/users/all")
+    String getAllUsers();
+
 }

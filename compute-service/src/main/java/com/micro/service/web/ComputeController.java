@@ -1,5 +1,6 @@
 package com.micro.service.web;
 
+import com.micro.service.member.consumer.MemberClient;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.lang.reflect.Member;
 
 @RefreshScope
 @RestController
@@ -29,6 +32,9 @@ public class ComputeController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private MemberClient memberClient;
 
     @RequestMapping(value = "/add" ,method = RequestMethod.GET)
     public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
@@ -48,5 +54,11 @@ public class ComputeController {
 
         return restTemplate.getForEntity("http://MEMBER/index/users/all",String.class).getBody();
     }
+
+    @RequestMapping("/users/all")
+    public String getAllUsers(){
+         return this.memberClient.getAllUsers();
+     }
+
 
 }
