@@ -1,10 +1,15 @@
 package com.micro.service.controller;
 
+import com.micro.service.model.User;
+import com.micro.service.service.UserService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @description:
@@ -24,8 +29,21 @@ public class IndexController {
     private String message;
 
 
+    @Autowired
+    private UserService userService;
+
+
+
     @RequestMapping("/message")
     public String indexMessage(){
+        logger.info("get config message" + message);
         return this.message;
+    }
+
+
+
+    @RequestMapping("/users/all")
+    public List<User> getAllUsers(){
+        return  userService.findAllUsers();
     }
 }
