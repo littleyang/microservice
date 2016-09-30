@@ -1,6 +1,6 @@
-package com.didispace;
+package com.micro.service;
 
-import com.didispace.web.ComputeController;
+import com.micro.service.web.ComputeController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

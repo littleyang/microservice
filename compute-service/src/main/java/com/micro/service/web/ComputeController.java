@@ -1,4 +1,4 @@
-package com.didispace.web;
+package com.micro.service.web;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
