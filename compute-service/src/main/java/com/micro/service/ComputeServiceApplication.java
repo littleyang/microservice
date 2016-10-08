@@ -17,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 @EnableCircuitBreaker
 @EnableHystrix
-@EnableHystrixDashboard
 public class ComputeServiceApplication extends SpringBootServletInitializer{
 
 	@Bean
