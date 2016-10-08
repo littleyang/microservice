@@ -1,5 +1,6 @@
 package com.micro.service.member.consumer;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Component
 public interface MemberClient {
 
+    @HystrixCommand(ignoreExceptions=Exception.class)
     @RequestMapping(method = RequestMethod.GET,value = "/index/users/all")
     String getAllUsers();
 

@@ -1,6 +1,7 @@
 package com.micro.service.web;
 
 import com.micro.service.member.consumer.MemberClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,6 +50,8 @@ public class ComputeController {
         return this.message;
     }
 
+
+    @HystrixCommand(fallbackMethod = "addServiceFallback")
     @RequestMapping("/members/all")
     public String getAllMembers(){
 
@@ -60,5 +63,9 @@ public class ComputeController {
          return this.memberClient.getAllUsers();
      }
 
+
+    public String addServiceFallback() {
+        return "error";
+    }
 
 }
