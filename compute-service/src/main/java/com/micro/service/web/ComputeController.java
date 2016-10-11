@@ -55,11 +55,12 @@ public class ComputeController {
     @RequestMapping("/members/all")
     public String getAllMembers(){
 
-        return restTemplate.getForEntity("http://MEMBER/index/users/all",String.class).getBody();
+        return restTemplate.getForEntity("http://MEMBER/users/all",String.class).getBody();
     }
 
     @RequestMapping("/users/all")
     public String getAllUsers(){
+         logger.info("get all users!!!!!!");
          return this.memberClient.getAllUsers();
      }
 
