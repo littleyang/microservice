@@ -11,27 +11,20 @@ import com.micro.service.auth.model.Account;
 import com.micro.service.auth.service.AccountService;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.common.exceptions.InvalidRequestException;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.security.Principal;
 
-@RestController
-public class AuthenticationController extends BaseController{
+@Controller
+public class ApiController extends BaseController{
 
     @Autowired
     protected AuthenticationManager authenticationManager;
@@ -42,13 +35,14 @@ public class AuthenticationController extends BaseController{
 
     @RequestMapping(value="/api/sample", method= RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Account> sampleGet(HttpServletResponse response){
-
+         logger.info("/api/sample=================");
         return new ResponseEntity<Account>(accountService.findByUsername("papidakos"), HttpStatus.CREATED);
         //return new ResponseEntity<Account>(new Account(), HttpStatus.CREATED);
     }
 
     @RequestMapping(value="/api/sample", method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Account> sample(HttpServletResponse response){
+        logger.info("/api/sample=================");
         return new ResponseEntity<Account>(accountService.findByUsername("papidakos"), HttpStatus.CREATED);
     }
 
