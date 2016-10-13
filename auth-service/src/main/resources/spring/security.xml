@@ -18,9 +18,6 @@
     <http pattern="/resources/static/**" security="none"/>
     <http pattern="/oauth/rest_token" security="none"/>
 
-    <!--
-        Spring MVC的注解配置, 注意: 该配置不能放置在 mkk-servlet.xml 文件中
-    -->
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 

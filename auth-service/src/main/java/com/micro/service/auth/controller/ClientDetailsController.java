@@ -34,18 +34,19 @@ public class ClientDetailsController {
     private OauthClientDetailsDtoValidator clientDetailsDtoValidator;
 
 
-    @RequestMapping("client_details")
+    @RequestMapping("/client_details")
     public String clientDetails(Model model) {
         List<OauthClientDetailsDto> clientDetailsDtoList = oauthService.loadAllOauthClientDetailsDtos();
         model.addAttribute("clientDetailsDtoList", clientDetailsDtoList);
         return "clientdetails/client_details";
+        //return "index";
     }
 
 
     /*
     * Logic delete
     * */
-    @RequestMapping("archive_client/{clientId}")
+    @RequestMapping("/archive_client/{clientId}")
     public String archiveClient(@PathVariable("clientId") String clientId) {
         oauthService.archiveOauthClientDetails(clientId);
         return "redirect:../client_details";
@@ -54,7 +55,7 @@ public class ClientDetailsController {
     /*
     * Test client
     * */
-    @RequestMapping("test_client/{clientId}")
+    @RequestMapping("/test_client/{clientId}")
     public String testClient(@PathVariable("clientId") String clientId, Model model) {
         OauthClientDetailsDto clientDetailsDto = oauthService.loadOauthClientDetailsDto(clientId);
         model.addAttribute("clientDetailsDto", clientDetailsDto);
