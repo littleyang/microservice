@@ -67,16 +67,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
-
-//        clients
-//                .inMemory()
-//                .withClient(propertyResolver.getProperty(PROP_CLIENTID))
-//                .scopes("read", "write")
-//                .authorities(Authorities.ROLE_ADMIN.name(), Authorities.ROLE_USER.name())
-//                .authorizedGrantTypes("password", "refresh_token")
-//                .secret(propertyResolver.getProperty(PROP_SECRET))
-//                .accessTokenValiditySeconds(propertyResolver.getProperty(PROP_TOKEN_VALIDITY_SECONDS, Integer.class, 1800));
-
         clients.withClientDetails(customJdbcClientDetailsService);
     }
 
