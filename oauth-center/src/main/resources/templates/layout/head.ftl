@@ -1,3 +1,5 @@
+<#assign base = request.contextPath />
+<#assign title = "title"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +10,10 @@
     <link href="${base}/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="${base}/js/jquery.min.js"></script>
     <script type="text/javascript" src="${base}/bootstrap/js/bootstrap.min.js"></script>
-    <title>Hello ${name}!</title>
+
+    <!--
+    <link href="http://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    -->
+    <title>${title}</title>
 </head>
 <body>
-<h2>Hello ${name}!</h2>
-</body>
-</html>

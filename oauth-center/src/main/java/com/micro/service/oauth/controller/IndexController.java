@@ -24,7 +24,7 @@ public class IndexController {
     @RequestMapping("/index/client")
     public String client(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
         model.addAttribute("name", name);
-        return "client";
+        return "client/client";
     }
 
 
