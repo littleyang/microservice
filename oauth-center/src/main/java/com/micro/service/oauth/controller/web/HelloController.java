@@ -1,4 +1,4 @@
-package com.micro.service.oauth.controller;
+package com.micro.service.oauth.controller.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
-@RequestMapping("/api")
 public class HelloController {
 
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    @RequestMapping(value = "/api/hello",method = RequestMethod.GET)
     @ResponseBody
     public String sayHello() {
         return "Hello User!";
