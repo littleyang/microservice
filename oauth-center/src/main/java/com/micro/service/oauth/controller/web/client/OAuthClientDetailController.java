@@ -3,7 +3,7 @@ package com.micro.service.oauth.controller.web.client;
 import com.micro.service.oauth.model.dto.OauthClientDetailsDto;
 import com.micro.service.oauth.service.client.OauthClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -17,18 +17,18 @@ import java.util.List;
  * @since: 2016-10-15 8:52 AM
  */
 
-@RestController
+@Controller
 @RequestMapping("/open/patrner")
 public class OAuthClientDetailController {
 
     @Autowired
     private OauthClientService oauthClientService;
 
-    @RequestMapping(value = "/client/details", method = RequestMethod.GET)
+    @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public String clientDetails(Model model) {
-        List<OauthClientDetailsDto> clientDetailsDtoList = oauthClientService.loadAllOauthClientDetailsDtos();
-        model.addAttribute("clientDetailsDtoList", clientDetailsDtoList);
-        return "client/details";
+        List<OauthClientDetailsDto> clients = oauthClientService.loadAllOauthClientDetailsDtos();
+        model.addAttribute("clients", clients);
+        return "client/clients";
     }
 
 
@@ -38,7 +38,7 @@ public class OAuthClientDetailController {
     @RequestMapping("/client/archive/{clientId}")
     public String archiveClient(@PathVariable("clientId") String clientId) {
         oauthClientService.archiveOauthClientDetails(clientId);
-        return "redirect:../client/details";
+        return "redirect:../clients";
     }
 
     /*
@@ -46,8 +46,8 @@ public class OAuthClientDetailController {
     * */
     @RequestMapping("/test/client/{clientId}")
     public String testClient(@PathVariable("clientId") String clientId, Model model) {
-        OauthClientDetailsDto clientDetailsDto = oauthClientService.loadOauthClientDetailsDto(clientId);
-        model.addAttribute("clientDetailsDto", clientDetailsDto);
+        OauthClientDetailsDto client = oauthClientService.loadOauthClientDetailsDto(clientId);
+        model.addAttribute("client", client);
         return "client/test";
     }
 
@@ -73,7 +73,7 @@ public class OAuthClientDetailController {
             return "client/register";
         }
         oauthClientService.registerClientDetails(formDto);
-        return "redirect:/client/details";
+        return "/client/details";
     }
 
 }

@@ -48,6 +48,7 @@ public class OAuth2ResourceServerConfiguration extends ResourceServerConfigurerA
                 .and()
                 .authorizeRequests()
                 .antMatchers("/hello/").permitAll()
+                .antMatchers("/open/patrner").permitAll()
                 .antMatchers("/secure/**").authenticated();
 
     }
