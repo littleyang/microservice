@@ -1,8 +1,8 @@
 package com.micro.service.oauth.security;
 
-import com.micro.service.oauth.dao.UserRepository;
 
 
+import com.micro.service.oauth.repository.jdbc.UserRepositoryJdbc;
 import com.micro.service.oauth.model.user.Authority;
 import com.micro.service.oauth.model.user.User;
 import org.slf4j.Logger;
@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.ArrayList;
@@ -32,8 +31,11 @@ public class OAuthUserDetailService implements UserDetailsService {
 
     private final Logger log = LoggerFactory.getLogger(UserDetailsService.class);
 
+//    @Autowired
+//    private UserJpaRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    private UserRepositoryJdbc userRepositoryJdbc;
 
     @Override
     //@Transactional
@@ -45,9 +47,11 @@ public class OAuthUserDetailService implements UserDetailsService {
 
         User userFromDatabase;
         if (lowercaseLogin.contains("@")) {
-            userFromDatabase = userRepository.findByEmail(lowercaseLogin);
+            //userFromDatabase = userRepositoryJdbc.findByEmail(lowercaseLogin);
+            userFromDatabase = userRepositoryJdbc.findByEmail(lowercaseLogin);
         } else {
-            userFromDatabase = userRepository.findByUsernameCaseInsensitive(lowercaseLogin);
+            //userFromDatabase = userRepositoryJdbc.findByUsernameCaseInsensitive(lowercaseLogin);
+            userFromDatabase = userRepositoryJdbc.findByUsername(lowercaseLogin);
         }
 
         if (userFromDatabase == null) {
