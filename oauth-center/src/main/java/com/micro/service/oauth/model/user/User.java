@@ -1,10 +1,7 @@
 package com.micro.service.oauth.model.user;
 
 import com.micro.service.oauth.model.AbstractModel;
-import org.hibernate.validator.constraints.Email;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
