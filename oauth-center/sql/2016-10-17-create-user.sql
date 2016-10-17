@@ -14,7 +14,6 @@ CREATE TABLE `user` (
   `default_user` tinyint(1) DEFAULT '0' COMMENT 'default用户',
   `created` datetime DEFAULT NULL COMMENT '创建时间',
   `updated` datetime DEFAULT NULL COMMENT '更新时间',
-  `last_login_time` datetime DEFAULT NULL COMMENT '上次登录时间',
   `archived` tinyint(1) DEFAULT '0' COMMENT '软删除标记',
   PRIMARY KEY (`id`,`username`),
   UNIQUE KEY `guid` (`guid`),

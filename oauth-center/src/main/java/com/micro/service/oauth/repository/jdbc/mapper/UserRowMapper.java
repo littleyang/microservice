@@ -36,7 +36,6 @@ public class UserRowMapper implements RowMapper<User> {
         user.setArchived(rs.getBoolean("archived"));
         user.setCreated(rs.getTimestamp("created").toLocalDateTime());
         user.setUpdated(rs.getTimestamp("updated").toLocalDateTime());
-        user.setLastLoginTime(rs.getTimestamp("last_login_time"));
 
         return user;
     }

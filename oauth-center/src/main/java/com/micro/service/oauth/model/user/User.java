@@ -56,9 +56,6 @@ public class User implements Serializable {
     @Column(name="default_user")
     private boolean defaultUser = false;
 
-    @Column(name="last_login_time")
-    private Date lastLoginTime;
-
     @Column(name="archived")
     private boolean archived = false;
 
@@ -136,14 +133,6 @@ public class User implements Serializable {
 
     public void setDefaultUser(boolean defaultUser) {
         this.defaultUser = defaultUser;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
     }
 
     public Set<Authority> getAuthorities() {
