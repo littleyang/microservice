@@ -34,39 +34,58 @@ public class AbstractModel implements Serializable {
     /**
      * The domain create time.
      */
-    protected LocalDateTime createTime = DateUtils.now();
+    private LocalDateTime created;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public LocalDateTime getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(LocalDateTime updated) {
+        this.updated = updated;
+    }
+
+    /**
+     * updated time
+
+     */
+    private LocalDateTime updated;
+
 
     public AbstractModel() {
     }
 
-    public int id() {
-        return id;
-    }
-
-    public void id(int id) {
-        this.id = id;
-    }
-
-    public boolean archived() {
-        return archived;
-    }
-
-    public AbstractModel archived(boolean archived) {
-        this.archived = archived;
-        return this;
-    }
-
-    public String guid() {
-        return guid;
-    }
-
-    public void guid(String guid) {
-        this.guid = guid;
-    }
-
-    public LocalDateTime createTime() {
-        return createTime;
-    }
 
 
     @Override
@@ -86,9 +105,6 @@ public class AbstractModel implements Serializable {
         return guid.hashCode();
     }
 
-    //For subclass override it
-    public void saveOrUpdate() {
-    }
 
     @Override
     public String toString() {
@@ -96,7 +112,8 @@ public class AbstractModel implements Serializable {
         sb.append("{id=").append(id);
         sb.append(", archived=").append(archived);
         sb.append(", guid='").append(guid).append('\'');
-        sb.append(", createTime=").append(createTime);
+        sb.append(", created=").append(created);
+        sb.append(", updated=").append(updated);
         sb.append('}');
         return sb.toString();
     }

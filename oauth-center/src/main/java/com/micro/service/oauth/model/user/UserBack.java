@@ -1,38 +1,40 @@
 package com.micro.service.oauth.model.user;
 
-import com.micro.service.oauth.model.AbstractModel;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.Date;
 import java.util.Set;
 
+@Entity
+public class UserBack {
 
-public class User extends AbstractModel{
-
-    private static final long serialVersionUID = -2921689304753120556L;
-
+    @Id
+    @Column(updatable = false, nullable = false)
+    @Size(min = 0, max = 50)
     private String username;
 
+    @Size(min = 0, max = 500)
     private String password;
 
-    private String mobile;
-
+    @Email
+    @Size(min = 0, max = 50)
     private String email;
-
-    private String phone;
 
     private boolean activated;
 
+    @Size(min = 0, max = 100)
+    @Column(name = "activationkey")
     private String activationKey;
 
+    @Size(min = 0, max = 100)
+    @Column(name = "resetpasswordkey")
     private String resetPasswordKey;
 
-    private boolean defaultUser = false;
-
-    private Date lastLoginTime;
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "authority"))
     private Set<Authority> authorities;
 
     public String getUsername() {
@@ -59,14 +61,6 @@ public class User extends AbstractModel{
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public boolean isActivated() {
         return activated;
     }
@@ -91,22 +85,6 @@ public class User extends AbstractModel{
         this.resetPasswordKey = resetPasswordKey;
     }
 
-    public boolean isDefaultUser() {
-        return defaultUser;
-    }
-
-    public void setDefaultUser(boolean defaultUser) {
-        this.defaultUser = defaultUser;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
-
     public Set<Authority> getAuthorities() {
         return authorities;
     }
@@ -115,20 +93,15 @@ public class User extends AbstractModel{
         this.authorities = authorities;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+
+        UserBack user = (UserBack) o;
+
         if (!username.equals(user.username)) return false;
+
         return true;
     }
 
@@ -139,14 +112,14 @@ public class User extends AbstractModel{
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("{username='").append(username).append('\'');
-        sb.append(", phone='").append(phone).append('\'');
-        sb.append(", id='").append(id).append('\'');
-        sb.append(", guid='").append(guid).append('\'');
-        sb.append(", defaultUser='").append(defaultUser).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", activated='" + activated + '\'' +
+                ", activationKey='" + activationKey + '\'' +
+                ", resetPasswordKey='" + resetPasswordKey + '\'' +
+                ", authorities=" + authorities +
+                '}';
     }
 }
