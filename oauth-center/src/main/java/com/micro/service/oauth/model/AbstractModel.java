@@ -36,6 +36,11 @@ public class AbstractModel implements Serializable {
      */
     private LocalDateTime created;
 
+    /**
+     * updated time
+     */
+    private LocalDateTime updated;
+
     public int getId() {
         return id;
     }
@@ -76,17 +81,9 @@ public class AbstractModel implements Serializable {
         this.updated = updated;
     }
 
-    /**
-     * updated time
-
-     */
-    private LocalDateTime updated;
-
 
     public AbstractModel() {
     }
-
-
 
     @Override
     public boolean equals(Object o) {

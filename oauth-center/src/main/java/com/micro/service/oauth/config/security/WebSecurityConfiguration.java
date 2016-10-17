@@ -1,6 +1,7 @@
 package com.micro.service.oauth.config.security;
 
 import com.micro.service.oauth.security.OAuthUserDetailService;
+import com.micro.service.oauth.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
@@ -32,8 +33,11 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+//    @Autowired
+//    private OAuthUserDetailService oauthUserDetailService;
+
     @Autowired
-    private OAuthUserDetailService oauthUserDetailService;
+    private UserService userService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -43,7 +47,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.userDetailsService(oauthUserDetailService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
 
     }
 

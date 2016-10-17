@@ -1,0 +1,22 @@
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `guid` varchar(64) NOT NULL COMMENT '业务id标识，系统唯一',
+  `username` varchar(128) NOT NULL COMMENT '用户名',
+  `password` varchar(128) NOT NULL COMMENT '密码',
+  `email` varchar(128) DEFAULT NULL COMMENT 'email',
+  `fullname` varchar(255) DEFAULT NULL COMMENT '全名',
+  `nickname` varchar(255) DEFAULT NULL COMMENT '花名，昵称',
+  `mobile` varchar(64) DEFAULT NULL COMMENT '手机号码',
+  `phone` varchar(64) DEFAULT NULL COMMENT '家用电话',
+  `activated` bit(1) DEFAULT NULL COMMENT '是否激活用户',
+  `activation_key` varchar(255) DEFAULT NULL COMMENT '激活用户key',
+  `reset_password_key` varchar(255) DEFAULT NULL COMMENT '重新设置密码key',
+  `default_user` tinyint(1) DEFAULT '0' COMMENT 'default用户',
+  `created` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated` datetime DEFAULT NULL COMMENT '更新时间',
+  `last_login_time` datetime DEFAULT NULL COMMENT '上次登录时间',
+  `archived` tinyint(1) DEFAULT '0' COMMENT '软删除标记',
+  PRIMARY KEY (`id`,`username`),
+  UNIQUE KEY `guid` (`guid`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;

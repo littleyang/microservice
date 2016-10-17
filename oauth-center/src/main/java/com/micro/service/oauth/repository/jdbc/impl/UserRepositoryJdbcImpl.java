@@ -1,11 +1,10 @@
-package com.micro.service.oauth.dao.jdbc;
+package com.micro.service.oauth.repository.jdbc.impl;
 
-import com.micro.service.oauth.dao.UserRepositoryJdbc;
-import com.micro.service.oauth.model.mapper.UserRowMapper;
+import com.micro.service.oauth.repository.jdbc.UserRepositoryJdbc;
+import com.micro.service.oauth.repository.base.RepositoryJdbcBase;
+import com.micro.service.oauth.repository.jdbc.mapper.UserRowMapper;
 import com.micro.service.oauth.model.user.Authority;
 import com.micro.service.oauth.model.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
@@ -21,29 +20,35 @@ import java.util.Set;
  */
 
 @Repository
-public class UserRepositoryJdbcImpl implements UserRepositoryJdbc {
+public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRepositoryJdbc {
 
 
     private static UserRowMapper userRowMapper = new UserRowMapper();
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-
+    /**
+     * 获取用户所有的权限
+     * @param username
+     * @return
+     */
     private Set<Authority> findPrivileges(String username) {
 
         final String sql = " select authority from user_authority where username = ? ";
-        final List<Authority> authorities = this.jdbcTemplate.queryForList(sql, new Object[]{username}, Authority.class);
+        final List<Authority> authorities = jdbcTemplate.queryForList(sql, new Object[]{username}, Authority.class);
 
         Set<Authority> privileges = new HashSet<Authority>(authorities);
         return privileges;
     }
 
 
+    /**
+     * 用username获取用户信息
+     * @param username
+     * @return
+     */
     @Override
     public User findByUsername(String username) {
         final String sql = " select * from user where username = ? and archived = 0 ";
-        final List<User> list = this.jdbcTemplate.query(sql, new Object[]{username}, userRowMapper);
+        final List<User> list = jdbcTemplate.query(sql, new Object[]{username}, userRowMapper);
         User user = null;
         if (!list.isEmpty()) {
             user = list.get(0);
@@ -52,10 +57,15 @@ public class UserRepositoryJdbcImpl implements UserRepositoryJdbc {
         return user;
     }
 
+    /**
+     * email获取用户信息
+     * @param email
+     * @return
+     */
     @Override
     public User findByEmail(String email) {
         final String sql = " select * from user where email = ? and archived = 0 ";
-        final List<User> list = this.jdbcTemplate.query(sql, new Object[]{email}, userRowMapper);
+        final List<User> list = jdbcTemplate.query(sql, new Object[]{email}, userRowMapper);
         User user = null;
         if (!list.isEmpty()) {
             user = list.get(0);

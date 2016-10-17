@@ -1,4 +1,4 @@
-package com.micro.service.oauth.model.mapper;
+package com.micro.service.oauth.repository.jdbc.mapper;
 
 import com.micro.service.oauth.model.user.User;
 import org.springframework.jdbc.core.RowMapper;

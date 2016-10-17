@@ -1,9 +1,8 @@
 package com.micro.service.oauth.security;
 
-import com.micro.service.oauth.dao.UserRepository;
 
 
-import com.micro.service.oauth.dao.UserRepositoryJdbc;
+import com.micro.service.oauth.repository.jdbc.UserRepositoryJdbc;
 import com.micro.service.oauth.model.user.Authority;
 import com.micro.service.oauth.model.user.User;
 import org.slf4j.Logger;
@@ -15,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.ArrayList;
@@ -34,7 +32,7 @@ public class OAuthUserDetailService implements UserDetailsService {
     private final Logger log = LoggerFactory.getLogger(UserDetailsService.class);
 
 //    @Autowired
-//    private UserRepository userRepository;
+//    private UserJpaRepository userRepository;
 
     @Autowired
     private UserRepositoryJdbc userRepositoryJdbc;

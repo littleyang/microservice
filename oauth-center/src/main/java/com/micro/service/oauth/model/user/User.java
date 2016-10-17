@@ -1,35 +1,77 @@
 package com.micro.service.oauth.model.user;
 
 import com.micro.service.oauth.model.AbstractModel;
+import com.micro.service.oauth.utils.GuidGenerator;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
 
-public class User extends AbstractModel{
+@Entity
+@Table(name="user")
+public class User implements Serializable {
 
     private static final long serialVersionUID = -2921689304753120556L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name="guid",unique=true)
+    private String guid = GuidGenerator.generate();
+
+    @Column(name="username",unique=true)
     private String username;
 
+    @Column(name="password")
     private String password;
 
+    @Column(name="fullname")
+    private String fullname;
+
+    @Column(name="nickname")
+    private String nickname;
+
+    @Column(name="mobile")
     private String mobile;
 
+    @Column(name="email")
     private String email;
 
+    @Column(name="phone")
     private String phone;
 
+    @Column(name="activated")
     private boolean activated;
 
+    @Column(name="activation_key")
     private String activationKey;
 
+    @Column(name="reset_password_key")
     private String resetPasswordKey;
 
+    @Column(name="default_user")
     private boolean defaultUser = false;
 
+    @Column(name="last_login_time")
     private Date lastLoginTime;
 
+    @Column(name="archived")
+    private boolean archived = false;
+
+    @Column(name="created")
+    private LocalDateTime created;
+
+    @Column(name="updated")
+    private LocalDateTime updated;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "authority"), foreignKey = @ForeignKey( name = "none" ))
     private Set<Authority> authorities;
 
     public String getUsername() {
@@ -120,18 +162,78 @@ public class User extends AbstractModel{
         this.mobile = mobile;
     }
 
+    public String getFullname() {
+        return fullname;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public LocalDateTime getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(LocalDateTime updated) {
+        this.updated = updated;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        if (!username.equals(user.username)) return false;
-        return true;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof AbstractModel)) {
+            return false;
+        }
+        User that = (User) o;
+        return guid.equals(that.guid);
     }
 
     @Override
     public int hashCode() {
-        return username.hashCode();
+        return guid.hashCode();
     }
 
     @Override

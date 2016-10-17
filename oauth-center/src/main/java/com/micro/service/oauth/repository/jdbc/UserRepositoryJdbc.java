@@ -1,4 +1,4 @@
-package com.micro.service.oauth.dao;
+package com.micro.service.oauth.repository.jdbc;
 
 import com.micro.service.oauth.model.user.User;
 

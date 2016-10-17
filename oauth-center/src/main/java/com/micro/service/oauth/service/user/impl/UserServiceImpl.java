@@ -1,7 +1,7 @@
 package com.micro.service.oauth.service.user.impl;
 
-import com.micro.service.oauth.dao.UserRepository;
-import com.micro.service.oauth.dao.UserRepositoryJdbc;
+import com.micro.service.oauth.dao.UserDao;
+import com.micro.service.oauth.repository.jdbc.UserRepositoryJdbc;
 import com.micro.service.oauth.model.user.User;
 import com.micro.service.oauth.security.WdcyUserDetails;
 import com.micro.service.oauth.service.user.UserService;
@@ -20,16 +20,18 @@ import org.springframework.stereotype.Service;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
+
 //    @Autowired
-//    private UserRepository userRepository;
+//    private UserRepositoryJdbc userRepositoryJdbc;
 
     @Autowired
-    private UserRepositoryJdbc userRepositoryJdbc;
+    private UserDao userDao;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //User user = userRepository.findByUsername(username);
-        User user = userRepositoryJdbc.findByUsername(username);
+        //User user = userRepositoryJdbc.findByUsername(username);
+        User user = userDao.getUserByUserName(username);
         if (user == null) {
             throw new UsernameNotFoundException("Not found any user for username[" + username + "]");
         }
