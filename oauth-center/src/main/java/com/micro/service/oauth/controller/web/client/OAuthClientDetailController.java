@@ -2,6 +2,7 @@ package com.micro.service.oauth.controller.web.client;
 
 import com.micro.service.oauth.model.dto.OauthClientDetailsDto;
 import com.micro.service.oauth.service.client.OauthClientService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,12 +22,15 @@ import java.util.List;
 @RequestMapping("/open/patrner")
 public class OAuthClientDetailController {
 
+    private final Logger log = Logger.getLogger(getClass());
+
     @Autowired
     private OauthClientService oauthClientService;
 
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public String clientDetails(Model model) {
         List<OauthClientDetailsDto> clients = oauthClientService.loadAllOauthClientDetailsDtos();
+        log.debug("clients size is : " + clients.size());
         model.addAttribute("clients", clients);
         return "client/clients";
     }
