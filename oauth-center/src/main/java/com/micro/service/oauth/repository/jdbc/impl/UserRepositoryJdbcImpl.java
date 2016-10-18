@@ -73,4 +73,11 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
         }
         return user;
     }
+
+
+    @Override
+    public List<User> findAllUsers() {
+        final String sql = " select * from user where archived = 0 ";
+        return jdbcTemplate.query(sql,userRowMapper);
+    }
 }

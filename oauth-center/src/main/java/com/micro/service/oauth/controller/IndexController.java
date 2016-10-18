@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @description:
@@ -21,10 +20,10 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/index/client")
+    @RequestMapping("/index/clients")
     public String client(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
         model.addAttribute("name", name);
-        return "client/client";
+        return "client/clients";
     }
 
 

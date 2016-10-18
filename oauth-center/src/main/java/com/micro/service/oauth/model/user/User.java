@@ -14,14 +14,14 @@ import java.util.Set;
 @Table(name="user")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = -2921689304753120556L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name="guid",unique=true)
-    private String guid = GuidGenerator.generate();
+    private String guid ;
 
     @Column(name="username",unique=true)
     private String username;
