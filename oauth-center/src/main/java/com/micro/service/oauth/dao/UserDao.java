@@ -43,4 +43,8 @@ public class UserDao {
     public List<User> findAllUsers(){
         return  userRepositoryJdbc.findAllUsers();
     }
+
+    public List<User> findAllUsersByJpa(){
+        return  userRepositoryJdbc.findAllUsers();
+    }
 }

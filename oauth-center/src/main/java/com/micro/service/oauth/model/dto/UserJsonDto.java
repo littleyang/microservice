@@ -2,7 +2,6 @@ package com.micro.service.oauth.model.dto;
 
 import com.micro.service.oauth.model.user.User;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +12,7 @@ import java.util.List;
  * @since: 2016-10-18 11:55 AM
  */
 
-public class UserJsonDto implements Serializable{
-
-    private static final long serialVersionUID = 1L;
+public class UserJsonDto{
 
     private String guid;
     private boolean archived;

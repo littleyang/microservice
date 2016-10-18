@@ -46,6 +46,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserJsonDto> findAllUser() {
         return UserJsonDto.UserListJsonDto(userDao.findAllUsers());
+        //return UserJsonDto.UserListJsonDto(userDao.findAllUsersByJpa());
     }
 }
 
