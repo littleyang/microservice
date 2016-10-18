@@ -40,13 +40,18 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     *
+     * 读取所有人信息
      * @return
      */
     @Override
     public List<UserJsonDto> findAllUser() {
         return UserJsonDto.UserListJsonDto(userDao.findAllUsers());
         //return UserJsonDto.UserListJsonDto(userDao.findAllUsersByJpa());
+    }
+
+    @Override
+    public User getCurrentUserByUserName(String username) {
+        return userDao.getUserByUserName(username);
     }
 }
 

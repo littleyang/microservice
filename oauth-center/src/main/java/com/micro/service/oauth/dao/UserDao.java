@@ -40,11 +40,20 @@ public class UserDao {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public List<User> findAllUsers(){
         return  userRepositoryJdbc.findAllUsers();
     }
 
+    /**
+     *
+     * @return
+     */
     public List<User> findAllUsersByJpa(){
         return  userRepositoryJdbc.findAllUsers();
     }
+
 }
