@@ -6,6 +6,8 @@ import com.micro.service.oauth.repository.jpa.UserJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @description:  对user数据访问的同一封装
  * @author: yang.zhou
@@ -38,5 +40,7 @@ public class UserDao {
 
     }
 
-
+    public List<User> findAllUsers(){
+        return  userRepositoryJdbc.findAllUsers();
+    }
 }

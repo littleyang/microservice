@@ -1,5 +1,6 @@
 package com.micro.service.oauth.controller.rest.user;
 
+import com.micro.service.oauth.model.dto.UserJsonDto;
 import com.micro.service.oauth.model.user.User;
 import com.micro.service.oauth.service.user.UserService;
 import org.apache.log4j.Logger;
@@ -29,15 +30,10 @@ public class UserRestController {
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<User> getAllUsers(){
-        List<User> users = new ArrayList<User>();
-        User one = new User();
-        one.setUsername("hello");
-        one.setMobile("13800138000");
-        users.add(one);
+    public List<UserJsonDto> getAllUsers(){
+        List<UserJsonDto> users = userService.findAllUser();
         return users;
     }
-
 
 
 }

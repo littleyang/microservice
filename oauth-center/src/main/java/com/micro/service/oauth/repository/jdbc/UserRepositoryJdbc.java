@@ -2,6 +2,8 @@ package com.micro.service.oauth.repository.jdbc;
 
 import com.micro.service.oauth.model.user.User;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -24,5 +26,11 @@ public interface UserRepositoryJdbc {
      * @return
      */
     public User findByEmail(String email);
+
+    /**
+     *
+     * @return
+     */
+    public List<User> findAllUsers();
 
 }

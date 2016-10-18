@@ -1,6 +1,10 @@
 package com.micro.service.oauth.service.user;
 
+import com.micro.service.oauth.model.dto.UserJsonDto;
+import com.micro.service.oauth.model.user.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
+import java.util.List;
 
 /**
  * @description:
@@ -10,4 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 
 public interface UserService extends UserDetailsService{
+
+    public List<UserJsonDto> findAllUser();
 }
