@@ -42,7 +42,8 @@ public class UserDao {
      * @return
      */
     public User getUserByUserNameByJpa(String username){
-        return userJpaRepository.findByUsername(username);
+        User user = userJpaRepository.findByUsername(username);
+        return user;
     }
 
 

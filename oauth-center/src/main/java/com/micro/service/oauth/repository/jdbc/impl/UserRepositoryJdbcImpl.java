@@ -61,6 +61,7 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
         User user = null;
         if (!list.isEmpty()) {
             user = list.get(0);
+            user.setAuthorities(findPrivileges(username));
         }
         return user;
     }
@@ -77,6 +78,7 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
         User user = null;
         if (!list.isEmpty()) {
             user = list.get(0);
+            user.setAuthorities(findPrivileges(user.getUsername()));
         }
         return user;
     }

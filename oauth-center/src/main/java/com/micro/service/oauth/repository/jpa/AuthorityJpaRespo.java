@@ -6,6 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -18,6 +20,5 @@ public interface AuthorityJpaRespo extends CrudRepository<Authority, String> {
 
     @Query("SELECT a FROM Authority a WHERE LOWER(a.name) = LOWER(:name) ")
     public Authority findAuthorityByName(@Param("name")String name);
-
 
 }

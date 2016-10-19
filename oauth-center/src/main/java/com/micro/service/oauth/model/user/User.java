@@ -3,6 +3,7 @@ package com.micro.service.oauth.model.user;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 
 @Entity
@@ -59,6 +60,12 @@ public class User implements Serializable{
 
     @Column(name="updated")
     private LocalDateTime updated;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "authority"), foreignKey = @ForeignKey( name = "none" ))
+    private Set<Authority> authorities;
 
     public String getUsername() {
         return username;
@@ -187,6 +194,14 @@ public class User implements Serializable{
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
     }
 
 }
