@@ -33,7 +33,8 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
      * @param username
      * @return
      */
-    private Set<Authority> findPrivileges(String username) {
+    @Override
+    public Set<Authority> findPrivileges(String username) {
         final String sql = " select authority from user_authority where username = ? ";
         final List<String > authorities = jdbcTemplate.queryForList(sql, new Object[]{username}, String.class);
         Set<Authority> privileges = new HashSet<Authority>(authorities.size());
@@ -60,7 +61,6 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
         User user = null;
         if (!list.isEmpty()) {
             user = list.get(0);
-            user.setAuthorities(findPrivileges(user.getUsername()));
         }
         return user;
     }
@@ -77,7 +77,6 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
         User user = null;
         if (!list.isEmpty()) {
             user = list.get(0);
-            user.setAuthorities(findPrivileges(user.getUsername()));
         }
         return user;
     }

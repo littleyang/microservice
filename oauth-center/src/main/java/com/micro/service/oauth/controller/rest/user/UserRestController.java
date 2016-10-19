@@ -33,9 +33,16 @@ public class UserRestController extends BaseController {
     }
 
 
+    @RequestMapping(value = "/currentdto",method = RequestMethod.GET)
+    public UserJsonDto getCurrentLoginUserDto(HttpServletRequest request){
+        User currentUser = getCurrentUser(request);
+        return new UserJsonDto(currentUser);
+    }
+
     @RequestMapping(value = "/current",method = RequestMethod.GET)
     public User getCurrentLoginUser(HttpServletRequest request){
-        return getCurrentUser(request);
+        User currentUser = getCurrentUser(request);
+        return currentUser;
     }
 
 }

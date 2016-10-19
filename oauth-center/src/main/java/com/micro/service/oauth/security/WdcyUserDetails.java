@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @description:
@@ -29,33 +30,23 @@ public class WdcyUserDetails implements UserDetails {
 
         protected User oauthUser;
 
+        protected Set<Authority> userAuthorities;
+
         protected List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 
         public WdcyUserDetails() {
         }
 
-        public WdcyUserDetails(User tempUser) {
+        public WdcyUserDetails(User tempUser, Set<Authority> authorities) {
             this.oauthUser = tempUser;
             this.username = tempUser.getUsername();
             this.password = tempUser.getPassword();
+            this.userAuthorities = authorities;
             initialAuthorities();
         }
 
         private void initialAuthorities() {
-//            //Default, everyone have it
-//            this.grantedAuthorities.add(DEFAULT_USER_ROLE);
-//            //default user have all privileges
-//            if (user.defaultUser()) {
-//                this.grantedAuthorities.add(new SimpleGrantedAuthority(ROLE_PREFIX + Privilege.UNITY.name()));
-//                this.grantedAuthorities.add(new SimpleGrantedAuthority(ROLE_PREFIX + Privilege.MOBILE.name()));
-//            } else {
-//                final List<Privilege> privileges = user.privileges();
-//                for (Privilege privilege : privileges) {
-//                    this.grantedAuthorities.add(new SimpleGrantedAuthority(ROLE_PREFIX + privilege.name()));
-//                }
-//            }
-
-            for (Authority authority : oauthUser.getAuthorities()) {
+            for (Authority authority : userAuthorities) {
                 GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority.getName());
                 grantedAuthorities.add(grantedAuthority);
             }

@@ -22,5 +22,10 @@ public interface UserService extends UserDetailsService{
     public List<UserJsonDto> findAllUser();
 
 
-    public  User getCurrentUserByUserName(String username);
+    /**
+     *
+     * @param username
+     * @return
+     */
+    public User getCurrentUserByUserName(String username);
 }
