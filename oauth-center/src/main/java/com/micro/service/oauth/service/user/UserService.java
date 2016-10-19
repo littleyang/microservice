@@ -15,5 +15,17 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService{
 
+    /**
+     *
+     * @return
+     */
     public List<UserJsonDto> findAllUser();
+
+
+    /**
+     *
+     * @param username
+     * @return
+     */
+    public User getCurrentUserByUserName(String username);
 }

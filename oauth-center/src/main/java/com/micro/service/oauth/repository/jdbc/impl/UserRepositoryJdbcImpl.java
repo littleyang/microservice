@@ -5,6 +5,7 @@ import com.micro.service.oauth.repository.base.RepositoryJdbcBase;
 import com.micro.service.oauth.repository.jdbc.mapper.UserRowMapper;
 import com.micro.service.oauth.model.user.Authority;
 import com.micro.service.oauth.model.user.User;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
@@ -22,6 +23,8 @@ import java.util.Set;
 @Repository
 public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRepositoryJdbc {
 
+    protected final Logger log = Logger.getLogger(getClass());
+
 
     private static UserRowMapper userRowMapper = new UserRowMapper();
 
@@ -30,12 +33,17 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
      * @param username
      * @return
      */
-    private Set<Authority> findPrivileges(String username) {
-
+    @Override
+    public Set<Authority> findPrivileges(String username) {
         final String sql = " select authority from user_authority where username = ? ";
-        final List<Authority> authorities = jdbcTemplate.queryForList(sql, new Object[]{username}, Authority.class);
-
-        Set<Authority> privileges = new HashSet<Authority>(authorities);
+        final List<String > authorities = jdbcTemplate.queryForList(sql, new Object[]{username}, String.class);
+        Set<Authority> privileges = new HashSet<Authority>(authorities.size());
+        for(int i=0;i<authorities.size();i++){
+            String temp = authorities.get(i);
+            Authority authority = new Authority();
+            authority.setName(temp);
+            privileges.add(authority);
+        }
         return privileges;
     }
 
@@ -46,13 +54,14 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
      * @return
      */
     @Override
-    public User findByUsername(String username) {
+    public User findByUsername(String username){
         final String sql = " select * from user where username = ? and archived = 0 ";
+        log.debug("findByUsername " + username + sql);
         final List<User> list = jdbcTemplate.query(sql, new Object[]{username}, userRowMapper);
         User user = null;
         if (!list.isEmpty()) {
             user = list.get(0);
-            user.setAuthorities(findPrivileges(user.getUsername()));
+            user.setAuthorities(findPrivileges(username));
         }
         return user;
     }
@@ -80,4 +89,5 @@ public class UserRepositoryJdbcImpl extends RepositoryJdbcBase implements UserRe
         final String sql = " select * from user where archived = 0 ";
         return jdbcTemplate.query(sql,userRowMapper);
     }
+
 }

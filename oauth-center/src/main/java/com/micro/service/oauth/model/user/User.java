@@ -1,20 +1,16 @@
 package com.micro.service.oauth.model.user;
 
-import com.micro.service.oauth.model.AbstractModel;
-import com.micro.service.oauth.utils.GuidGenerator;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 
 @Entity
 @Table(name="user")
-public class User implements Serializable {
+public class User implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 6569365774429340632L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -135,14 +131,6 @@ public class User implements Serializable {
         this.defaultUser = defaultUser;
     }
 
-    public Set<Authority> getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(Set<Authority> authorities) {
-        this.authorities = authorities;
-    }
-
     public String getMobile() {
         return mobile;
     }
@@ -208,33 +196,12 @@ public class User implements Serializable {
         this.updated = updated;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof AbstractModel)) {
-            return false;
-        }
-        User that = (User) o;
-        return guid.equals(that.guid);
+    public Set<Authority> getAuthorities() {
+        return authorities;
     }
 
-    @Override
-    public int hashCode() {
-        return guid.hashCode();
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("{username='").append(username).append('\'');
-        sb.append(", phone='").append(phone).append('\'');
-        sb.append(", id='").append(id).append('\'');
-        sb.append(", guid='").append(guid).append('\'');
-        sb.append(", defaultUser='").append(defaultUser).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
 }

@@ -1,8 +1,10 @@
 package com.micro.service.oauth.repository.jdbc;
 
+import com.micro.service.oauth.model.user.Authority;
 import com.micro.service.oauth.model.user.User;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @description:
@@ -32,5 +34,8 @@ public interface UserRepositoryJdbc {
      * @return
      */
     public List<User> findAllUsers();
+
+
+    public Set<Authority> findPrivileges(String username);
 
 }

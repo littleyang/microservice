@@ -3,7 +3,9 @@ package com.micro.service.oauth.repository.jpa;
 import com.micro.service.oauth.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  * @description: 用户对user的ORMapping管理
@@ -13,21 +15,16 @@ import org.springframework.data.repository.query.Param;
  * @since: 2016-10-14 1:16 PM
  */
 
-public interface UserJpaRepository extends JpaRepository<User, String> {
+
+public interface UserJpaRepository extends CrudRepository<User, Integer> {
 
     @Query("SELECT u FROM User u WHERE LOWER(u.username) = LOWER(:username)")
-    User findByUsernameCaseInsensitive(@Param("username") String username);
+    public User findByUsernameCaseInsensitive(@Param("username") String username);
 
     @Query
-    User findByEmail(String email);
-
-    @Query
-    User findByEmailAndActivationKey(String email, String activationKey);
-
-    @Query
-    User findByEmailAndResetPasswordKey(String email, String resetPasswordKey);
+    public User findByEmail(@Param("email")String email);
 
     @Query("SELECT u FROM User u WHERE LOWER(u.username) = LOWER(:username)")
-    User findByUsername(String username);
+    public User findByUsername(@Param("username")String username);
 
 }

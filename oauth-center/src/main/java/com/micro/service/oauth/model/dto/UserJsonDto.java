@@ -1,6 +1,7 @@
 package com.micro.service.oauth.model.dto;
 
 import com.micro.service.oauth.model.user.User;
+import com.micro.service.oauth.utils.DateUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,17 +14,18 @@ import java.util.List;
  * @since: 2016-10-18 11:55 AM
  */
 
-public class UserJsonDto implements Serializable{
-
-    private static final long serialVersionUID = 1L;
+public class UserJsonDto {
 
     private String guid;
-    private boolean archived;
-
     private String username;
+    private String mobile;
+    private String fullname;
+    private String nickname;
     private String phone;
     private String email;
-    private String mobile;
+    private String created;
+    private String updated;
+    private boolean archived;
 
     public UserJsonDto() {
     }
@@ -35,17 +37,19 @@ public class UserJsonDto implements Serializable{
         this.phone = user.getPhone();
         this.email = user.getEmail();
         this.mobile = user.getMobile();
+        this.fullname = user.getFullname();
+        this.nickname = user.getNickname();
+        this.created = DateUtils.toDateTime(user.getCreated());
+        this.updated = DateUtils.toDateTime(user.getUpdated());
+
     }
 
     public static List<UserJsonDto> UserListJsonDto(List<User> users){
-
         List<UserJsonDto> results = new ArrayList<UserJsonDto>(users.size());
-
         users.forEach(user -> {
             UserJsonDto dto = new UserJsonDto(user);
             results.add(dto);
         });
-
         return results;
     }
 
@@ -95,5 +99,38 @@ public class UserJsonDto implements Serializable{
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getFullname() {
+
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
     }
 }

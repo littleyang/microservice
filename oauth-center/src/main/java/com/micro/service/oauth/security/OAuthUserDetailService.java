@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * @description:
@@ -45,14 +46,8 @@ public class OAuthUserDetailService implements UserDetailsService {
 
         String lowercaseLogin = login.toLowerCase();
 
-        User userFromDatabase;
-        if (lowercaseLogin.contains("@")) {
-            //userFromDatabase = userRepositoryJdbc.findByEmail(lowercaseLogin);
-            userFromDatabase = userRepositoryJdbc.findByEmail(lowercaseLogin);
-        } else {
-            //userFromDatabase = userRepositoryJdbc.findByUsernameCaseInsensitive(lowercaseLogin);
-            userFromDatabase = userRepositoryJdbc.findByUsername(lowercaseLogin);
-        }
+        User userFromDatabase = userRepositoryJdbc.findByUsername(lowercaseLogin);
+        Set<Authority> userAuths = userRepositoryJdbc.findPrivileges(lowercaseLogin);
 
         if (userFromDatabase == null) {
             throw new UsernameNotFoundException("User " + lowercaseLogin + " was not found in the database");
@@ -61,7 +56,7 @@ public class OAuthUserDetailService implements UserDetailsService {
         }
 
         Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        for (Authority authority : userFromDatabase.getAuthorities()) {
+        for (Authority authority : userAuths) {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority.getName());
             grantedAuthorities.add(grantedAuthority);
         }
