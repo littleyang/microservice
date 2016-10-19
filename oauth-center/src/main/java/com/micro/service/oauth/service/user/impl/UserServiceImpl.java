@@ -51,7 +51,6 @@ public class UserServiceImpl implements UserService {
 //        return new AuthUser(user.getUsername(), user.getPassword(), grantedAuthorities);
 
 
-
         // 自定义user的实现方式
         return new WdcyUserDetails(user,userAuths);
     }
@@ -68,8 +67,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getCurrentUserByUserName(String username) {
-        //return userDao.getUserByUserName(username);
-        return userDao.getUserByUserNameByJpa(username);
+        return userDao.getUserByUserName(username);
+        //return userDao.getUserByUserNameByJpa(username);
     }
 }
 

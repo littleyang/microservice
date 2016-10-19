@@ -46,7 +46,11 @@ public class UserDao {
         return user;
     }
 
-
+    /**
+     *
+     * @param email
+     * @return
+     */
     public User getUserByEmail(String email){
         return userRepositoryJdbc.findByEmail(email);
     }
@@ -56,14 +60,6 @@ public class UserDao {
      * @return
      */
     public List<User> findAllUsers(){
-        return  userRepositoryJdbc.findAllUsers();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public List<User> findAllUsersByJpa(){
         return  userRepositoryJdbc.findAllUsers();
     }
 
