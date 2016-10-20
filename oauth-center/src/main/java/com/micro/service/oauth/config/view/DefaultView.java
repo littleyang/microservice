@@ -35,7 +35,7 @@ public class DefaultView extends WebMvcConfigurerAdapter {
     @Bean
     public FilterRegistrationBean getDemoFilter(){
         RequestFilter filter = new RequestFilter();
-        FilterRegistrationBean registrationBean=new FilterRegistrationBean();
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(filter);
         List<String> urlPatterns=new ArrayList<String>();
         urlPatterns.add("/*");//拦截路径，可以添加多个
