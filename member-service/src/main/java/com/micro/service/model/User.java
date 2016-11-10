@@ -1,6 +1,7 @@
 package com.micro.service.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @description:
@@ -11,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="user")
-public class User {
+public class User implements Serializable{
 
     @Id
     @GeneratedValue
