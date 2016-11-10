@@ -22,16 +22,17 @@ import org.springframework.stereotype.Component;
 @CacheConfig(cacheNames = "members")
 public interface UserRepository extends JpaRepository<User,Integer> {
 
-    @Cacheable(key = "'microservice:members:user:'+#account")
-    //@Query("from User u where u.account=:account")
+    @Cacheable(key = "'microservice:members:user:'+#p0")
+    //@Cacheable(key = "#p0")
     User findByAccount(String account);
 
     // 更新数据同时更新缓存
-    @CachePut(key = "'microservice:members:user'+#user.account")
+    @CachePut(key = "'microservice:members:user:'+#p0.account")
+    //@CachePut(key = "#p0.account")
     User save(User user);
 
     // 缓存失效
-    @CacheEvict(value = "userCacahe",key = "'microservice:members:user'+#user.account")
+    @CacheEvict(key = "'microservice:members:user:'+#p0.account")
     void delete(User user);
 
 }
