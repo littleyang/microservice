@@ -1,7 +1,7 @@
 package com.micro.service.controller;
 
 import com.micro.service.model.User;
-import com.micro.service.service.UserService;
+import com.micro.service.service.user.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
