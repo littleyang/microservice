@@ -1,4 +1,4 @@
-package com.micro.service.repository;
+package com.micro.service.repository.jpa;
 
 import com.micro.service.model.User;
 import org.springframework.cache.annotation.CacheConfig;

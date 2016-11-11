@@ -1,7 +1,8 @@
 package com.micro.service.repository.test;
 
 import com.micro.service.model.User;
-import com.micro.service.repository.UserRepository;
+import com.micro.service.repository.jdbc.UserRepositoryJdbc;
+import com.micro.service.repository.jpa.UserRepositoryJpa;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,14 +28,17 @@ public class UserRespositoryTest {
     }
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepositoryJpa userRepositoryJpa;
+
+    @Autowired
+    private UserRepositoryJdbc userJdbcRepository;
 
     @Test
     public void testGetUserByAccount(){
 
         String account = "test-001";
 
-        User userTemp = userRepository.findByAccount(account);
+        User userTemp = userRepositoryJpa.findByAccount(account);
 
         System.out.println("============== account === " + userTemp.getAccount());
         System.out.println("============== username === " + userTemp.getFullname());
@@ -50,7 +54,7 @@ public class UserRespositoryTest {
         user.setAccount("test-user-" + new Random().nextInt());
         user.setFullname("test-user-name");
 
-        User tempUser = userRepository.save(user);
+        User tempUser = userRepositoryJpa.save(user);
 
         System.out.println("ddddddd ===== : " + tempUser.getAccount());
         Assert.assertNotNull(tempUser);
@@ -64,16 +68,22 @@ public class UserRespositoryTest {
         user.setAccount("test-user-" + new Random().nextInt());
         user.setFullname("test-user-name");
 
-        User tempUser = userRepository.save(user);
+        User tempUser = userRepositoryJpa.save(user);
 
         System.out.println("ddddddd ===== : " + tempUser.getAccount());
         Assert.assertNotNull(tempUser);
         Assert.assertEquals("two user name should be equal : " , user.getAccount(),tempUser.getAccount());
 
 
-        userRepository.delete(tempUser);
-        User userAfterDelete = userRepository.findByAccount(tempUser.getAccount());
+        userRepositoryJpa.delete(tempUser);
+        User userAfterDelete = userRepositoryJpa.findByAccount(tempUser.getAccount());
         Assert.assertNull("user should be null: " ,userAfterDelete);
+
+    }
+
+
+    @Test
+    public void testGetUserByAccountUseJdbc(){
 
     }
 }
