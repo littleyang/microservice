@@ -36,7 +36,8 @@ public class UserRespositoryTest {
 
         User userTemp = userRepository.findByAccount(account);
 
-        System.out.println("==============" + userTemp.getAccount());
+        System.out.println("============== account === " + userTemp.getAccount());
+        System.out.println("============== username === " + userTemp.getFullname());
 
         Assert.assertNotNull(userTemp);
         Assert.assertEquals("account should be equal : test-001 ",userTemp.getAccount(),account);
