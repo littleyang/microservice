@@ -1,7 +1,7 @@
-package com.micro.service.service;
+package com.micro.service.service.user;
 
 import com.micro.service.model.User;
-import com.micro.service.repository.UserRepository;
+import com.micro.service.repository.jpa.UserRepositoryJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepositoryJpa userRepositoryJpa;
 
 
     /**
@@ -28,7 +28,7 @@ public class UserService {
      */
     public User createUser(User user){
 
-        return userRepository.save(user);
+        return userRepositoryJpa.save(user);
 
     }
 
@@ -38,6 +38,6 @@ public class UserService {
      * @return
      */
     public List<User> findAllUsers(){
-        return userRepository.findAll();
+        return userRepositoryJpa.findAll();
     }
 }

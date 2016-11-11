@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @CacheConfig(cacheNames = "members")
-public interface UserRepository extends JpaRepository<User,Integer> {
+public interface UserRepositoryJpa extends JpaRepository<User,Integer> {
 
     @Cacheable(key = "'microservice:members:user:'+#p0")
     //@Cacheable(key = "#p0")
