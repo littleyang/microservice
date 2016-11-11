@@ -31,7 +31,7 @@ public class UserRespositoryTest {
     private UserRepositoryJpa userRepositoryJpa;
 
     @Autowired
-    private UserRepositoryJdbc userJdbcRepository;
+    private UserRepositoryJdbc userRepositoryJdbc;
 
     @Test
     public void testGetUserByAccount(){
@@ -84,6 +84,8 @@ public class UserRespositoryTest {
 
     @Test
     public void testGetUserByAccountUseJdbc(){
-
+        String account = "test-001";
+        User userTemp = userRepositoryJdbc.findUserByAccount(account);
+        System.out.println("account =========   " +userTemp.getAccount());
     }
 }
