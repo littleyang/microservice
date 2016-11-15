@@ -86,6 +86,6 @@ public class UserRespositoryTest {
     public void testGetUserByAccountUseJdbc(){
         String account = "test-001";
         User userTemp = userRepositoryJdbc.findUserByAccount(account);
-        System.out.println("account =========   " +userTemp.getAccount());
+        System.out.println("account =========   " + userTemp.getAccount());
     }
 }
