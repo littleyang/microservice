@@ -8,6 +8,12 @@
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
+	<parent>
+		<groupId>com.micro.service.compute</groupId>
+		<artifactId>compute</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
 	<name>compute-service</name>
 	<description>Spring Cloud project</description>
 
@@ -17,13 +23,6 @@
 		<project.compute.api.version>1.0.0-SNAPSHOT</project.compute.api.version>
 	</properties>
 
-	<parent>
-		<groupId>com.micro.service.compute</groupId>
-		<artifactId>compute</artifactId>
-		<version>${project.compute.api.version}</version>
-	</parent>
-
-	<!--
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -35,10 +34,19 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	-->
 
 	<dependencies>
 
+		<!-- api seetings -->
+		<dependency>
+			<groupId>com.micro.service.compute</groupId>
+			<artifactId>compute-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+
+
+		<!-- spring boot settings -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>

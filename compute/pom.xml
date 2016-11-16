@@ -9,10 +9,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
-
 		<module>compute-service</module>
 		<module>compute-api</module>
-
 	</modules>
 
 	<name>compute</name>
@@ -25,18 +23,6 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

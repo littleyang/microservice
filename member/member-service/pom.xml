@@ -27,7 +27,6 @@
 	<dependencies>
 
 		<!-- api settings -->
-
 		<dependency>
 			<groupId>com.micro.service.member</groupId>
 			<artifactId>member-api</artifactId>

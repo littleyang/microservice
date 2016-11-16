@@ -6,14 +6,12 @@
 	<groupId>com.micro.service.coupon</groupId>
 	<artifactId>coupon</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-
+	<packaging>pom</packaging>
 
 	<modules>
 		<module>coupon-api</module>
 		<module>coupon-service</module>
 	</modules>
-
-	<packaging>pom</packaging>
 
 	<name>coupon</name>
 	<description>Demo project for Spring Boot</description>
