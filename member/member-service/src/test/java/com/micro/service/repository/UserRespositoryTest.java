@@ -1,5 +1,6 @@
-package com.micro.service.repository.test;
+package com.micro.service.repository;
 
+import com.micro.service.base.ApplicationBaseTest;
 import com.micro.service.model.User;
 import com.micro.service.repository.jdbc.UserRepositoryJdbc;
 import com.micro.service.repository.jpa.UserRepositoryJpa;
@@ -8,6 +9,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Random;
@@ -21,11 +26,7 @@ import java.util.Random;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserRespositoryTest {
-
-    @Test
-    public void contextLoads() {
-    }
+public class UserRespositoryTest extends ApplicationBaseTest {
 
     @Autowired
     private UserRepositoryJpa userRepositoryJpa;

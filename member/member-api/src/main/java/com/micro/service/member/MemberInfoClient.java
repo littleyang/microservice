@@ -13,7 +13,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
  * @since: 2016-11-16 1:52 PM
  */
 
-@FeignClient(MemberInfoClient.SERVICE_NAME)
+@FeignClient("member")
 @Component
 public interface MemberInfoClient {
 
@@ -24,7 +24,9 @@ public interface MemberInfoClient {
     String GET_MEMBER_BY_ID_URL = "/member/{id}";
 
     @HystrixCommand(ignoreExceptions=Exception.class)
-    @RequestMapping(method = RequestMethod.GET,value = MemberInfoClient.GET_ALL_MEMBERS_URL)
+    @RequestMapping(method = RequestMethod.GET,value = GET_ALL_MEMBERS_URL)
     public String getAllMembers();
+
+
 
 }
