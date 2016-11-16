@@ -3,20 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.micro.service.coupon</groupId>
-	<artifactId>coupon</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-
-
-	<modules>
-		<module>coupon-api</module>
-		<module>coupon-service</module>
-	</modules>
-
+	<groupId>com.micro.service.order</groupId>
+	<artifactId>order</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>coupon</name>
+	<name>order</name>
 	<description>Demo project for Spring Boot</description>
+
+	<modules>
+		<module>order-service</module>
+		<module>order-api</module>
+	</modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
