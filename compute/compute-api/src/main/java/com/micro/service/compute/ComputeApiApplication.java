@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ComputeApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ComputeApiApplication.class, args);
-	}
+//	public static void main(String[] args) {
+//		SpringApplication.run(ComputeApiApplication.class, args);
+//	}
+
 }

@@ -4,26 +4,40 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.micro.service.compute</groupId>
-	<artifactId>compute-api</artifactId>
+	<artifactId>compute-sal</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>compute-api</name>
+	<name>compute-sal</name>
 	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>com.micro.service.compute</groupId>
+		<artifactId>compute</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<project.compute.api.version>1.0.0-SNAPSHOT</project.compute.api.version>
+		<project.member.api.version>1.0.0-SNAPSHOT</project.member.api.version>
 	</properties>
 
-	<parent>
-		<groupId>com.micro.service.api</groupId>
-		<artifactId>common-api-parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
-
 	<dependencies>
+
+		<dependency>
+			<groupId>com.micro.service.compute</groupId>
+			<artifactId>compute-api</artifactId>
+			<version>${project.compute.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.micro.service.member</groupId>
+			<artifactId>member-api</artifactId>
+			<version>${project.member.api.version}</version>
+		</dependency>
 
 	</dependencies>
 
