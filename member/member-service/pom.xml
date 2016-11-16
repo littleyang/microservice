@@ -3,19 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.micro.service</groupId>
+	<groupId>com.micro.service.member</groupId>
 	<artifactId>member-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>member-service</name>
 	<description>memeber project for Spring Boot</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.micro.service.member</groupId>
+		<artifactId>member</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -25,6 +24,14 @@
 	</properties>
 
 	<dependencies>
+
+		<!-- api settings -->
+
+		<dependency>
+			<groupId>com.micro.service.member</groupId>
+			<artifactId>member-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -124,6 +131,7 @@
 
 	</dependencies>
 
+	<!--
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -135,7 +143,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
+    -->
 	<build>
 		<plugins>
 			<plugin>
