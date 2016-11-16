@@ -1,5 +1,6 @@
 package com.micro.service;
 
+import com.micro.service.compute.ApiCcccc;
 import com.micro.service.web.ComputeController;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +26,8 @@ public class ApplicationTests {
 
 	private MockMvc mvc;
 
+	ApiCcccc apiCcccc = new ApiCcccc();
+
 	@Before
 	public void setUp() throws Exception {
 		mvc = MockMvcBuilders.standaloneSetup(new ComputeController()).build();
@@ -35,6 +38,13 @@ public class ApplicationTests {
 		mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(content().string(equalTo("Hello World")));
+	}
+
+
+	@Test
+	public void testApiCcccc(){
+		String name = "wangdu";
+		System.out.println(apiCcccc.sayHello(name));
 	}
 
 }
