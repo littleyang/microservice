@@ -21,6 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<project.member.api.version>1.0.0-SNAPSHOT</project.member.api.version>
 	</properties>
 
 	<dependencies>
@@ -30,7 +31,7 @@
 		<dependency>
 			<groupId>com.micro.service.member</groupId>
 			<artifactId>member-api</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>${project.member.api.version}</version>
 		</dependency>
 
 		<dependency>
