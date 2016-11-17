@@ -23,6 +23,8 @@
 		<java.version>1.8</java.version>
 		<project.compute.api.version>1.0.0-SNAPSHOT</project.compute.api.version>
 		<project.member.api.version>1.0.0-SNAPSHOT</project.member.api.version>
+		<project.order.api.version>1.0.0-SNAPSHOT</project.order.api.version>
+		<project.coupon.api.version>1.0.0-SNAPSHOT</project.coupon.api.version>
 	</properties>
 
 	<dependencies>
@@ -37,6 +39,18 @@
 			<groupId>com.micro.service.member</groupId>
 			<artifactId>member-api</artifactId>
 			<version>${project.member.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.micro.service.order</groupId>
+			<artifactId>order-api</artifactId>
+			<version>${project.order.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.micro.service.coupon</groupId>
+			<artifactId>coupon-api</artifactId>
+			<version>${project.coupon.api.version}</version>
 		</dependency>
 
 	</dependencies>

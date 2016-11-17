@@ -4,7 +4,6 @@ import com.micro.service.compute.ComputeSalApplicationTests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -28,7 +27,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MemberInfoClientTest extends ComputeSalApplicationTests {
 
     @Autowired
-    private MemberInfoService memberInfoService;
+    private ComputeMemberInfoService memberInfoService;
 
     @Test
     public void testGetAllMembers(){

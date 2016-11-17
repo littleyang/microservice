@@ -19,6 +19,7 @@
 	<modules>
 		<module>compute-service</module>
 		<module>compute-api</module>
+		<module>compute-sal</module>
 	</modules>
 
 	<name>compute</name>
@@ -28,7 +29,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<project.compute.api.version>1.0.0-SNAPSHOT</project.compute.api.version>
 		<project.compute.sal.version>1.0.0-SNAPSHOT</project.compute.sal.version>
 	</properties>
 
@@ -45,6 +45,14 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+		<!-- api sal seetings -->
+		<dependency>
+			<groupId>com.micro.service.compute</groupId>
+			<artifactId>compute-sal</artifactId>
+			<version>${project.compute.sal.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
