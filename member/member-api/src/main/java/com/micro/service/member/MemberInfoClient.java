@@ -17,8 +17,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 @Component
 public interface MemberInfoClient {
 
-    String SERVICE_NAME = "member";
-
     String GET_ALL_MEMBERS_URL = "/index/users/all" ;
 
     String GET_MEMBER_BY_ID_URL = "/member/{id}";
@@ -26,7 +24,5 @@ public interface MemberInfoClient {
     @HystrixCommand(ignoreExceptions=Exception.class)
     @RequestMapping(method = RequestMethod.GET,value = GET_ALL_MEMBERS_URL)
     public String getAllMembers();
-
-
 
 }
