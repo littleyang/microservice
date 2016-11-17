@@ -25,7 +25,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @EnableFeignClients
 @EnableCircuitBreaker
 @EnableHystrix
-public class MemberInfoApiTest extends ApplicationBaseTest {
+public class MemberInfoApiTest{
+
+    @Test
+    public void contextLoads() {
+    }
 
     @Autowired
     private MemberInfoService memberInfoService;

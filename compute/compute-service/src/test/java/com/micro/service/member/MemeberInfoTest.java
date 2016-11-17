@@ -1,6 +1,6 @@
 package com.micro.service.member;
 
-import com.micro.service.member.service.MemberInfoService;
+import com.micro.service.compute.member.ComputeMemberInfoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class MemeberInfoTest {
     }
 
     @Autowired
-    private MemberInfoService memberInfoService;
+    private ComputeMemberInfoService memberInfoService;
 
 
     @Test

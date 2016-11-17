@@ -14,6 +14,7 @@
 	<modules>
 		<module>order-service</module>
 		<module>order-api</module>
+		<module>order-sal</module>
 	</modules>
 
 	<parent>
