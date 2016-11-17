@@ -11,7 +11,6 @@
 	<name>coupon-service</name>
 	<description>Demo project for Spring Boot</description>
 
-
 	<parent>
 		<groupId>com.micro.service.coupon</groupId>
 		<artifactId>coupon</artifactId>

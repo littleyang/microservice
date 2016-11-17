@@ -3,6 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>com.micro.service.api</groupId>
+		<artifactId>common-api-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
 	<groupId>com.micro.service.order</groupId>
 	<artifactId>order-api</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -11,14 +17,6 @@
 	<name>order-api</name>
 	<description>Demo project for Spring Boot</description>
 
-
-	<parent>
-		<groupId>com.micro.service.order</groupId>
-		<artifactId>order</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
-
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -26,16 +24,7 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>

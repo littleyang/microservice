@@ -10,6 +10,7 @@
 
 	<modules>
 		<module>coupon-api</module>
+		<module>coupon-sal</module>
 		<module>coupon-service</module>
 	</modules>
 
