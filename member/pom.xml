@@ -66,7 +66,6 @@
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
 
-
 		<!-- 服务监控   -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
