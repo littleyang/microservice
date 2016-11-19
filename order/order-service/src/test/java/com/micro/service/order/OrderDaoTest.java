@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -41,6 +43,7 @@ public class OrderDaoTest {
     public void updateOrder(){
         Order temp = orderDao.getOrderById(13);
         Assert.assertEquals("temp order address should be equal","test address",temp.getAddress());
+        Assert.assertTrue("member id should == 100001",temp.getMemberId()==100001);
 
         //update order
         temp.setName("test update order name" + System.currentTimeMillis());
@@ -70,4 +73,15 @@ public class OrderDaoTest {
         Assert.assertNull(tempDeleted);
 
     }
+
+    @Test
+    public void testGetListOrder(){
+
+        List<Order> testList = orderDao.getAllOrdersList();
+        System.out.println(" testList.size() " + testList.size());
+        Assert.assertTrue("order list should not null ", testList.size()>0);
+
+    }
+
+
 }
