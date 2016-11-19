@@ -1,5 +1,7 @@
 package com.micro.service.service;
 
+import com.micro.service.model.order.Order;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -8,4 +10,9 @@ package com.micro.service.service;
  */
 
 public interface OrderService {
+
+    public int createOrder(Order order);
+
+
+
 }

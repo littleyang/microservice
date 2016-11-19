@@ -1,5 +1,7 @@
 package com.micro.service.dao.order;
 
+import com.micro.service.model.order.Order;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -8,4 +10,14 @@ package com.micro.service.dao.order;
  */
 
 public interface OrderDao {
+
+    public Order getOrderById(int id);
+
+    public int saveOrder(Order order);
+
+    public void deleteOrderById(int id);
+
+    public void deleteOrder(Order order);
+
+
 }
