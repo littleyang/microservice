@@ -29,12 +29,6 @@
 
 		<!-- api settings -->
 		<dependency>
-			<groupId>com.micro.service.order</groupId>
-			<artifactId>order-api</artifactId>
-			<version>${project.order.api.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.micro.service</groupId>
 			<artifactId>order-sal</artifactId>
 			<version>${project.order.sal.version}</version>
@@ -59,6 +53,28 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.26</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
 		<dependency>
