@@ -6,6 +6,8 @@ import com.micro.service.repository.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -29,15 +31,29 @@ public class OrderDaoImpl implements OrderDao {
         return orderMapper.insert(order);
     }
 
+    public int saveOrderAndSelect(Order order){
+        return orderMapper.insertAndSelectId(order);
+    }
+
+    @Override
+    public Order updateOrder(Order order) {
+        int result = orderMapper.updateByPrimaryKeyWithBLOBs(order);
+        return orderMapper.selectByPrimaryKey(order.getId());
+    }
+
     @Override
     public void deleteOrderById(int id) {
         orderMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public void deleteOrder(Order order) {
+    public void softDeleteOrder(Order order) {
       orderMapper.deleteOrderByIdSofted(order);
     }
 
+    @Override
+    public List<Order> getAllOrdersList() {
+        return orderMapper.getAllOrders();
+    }
 
 }

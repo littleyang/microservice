@@ -6,6 +6,8 @@ import com.micro.service.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -25,5 +27,26 @@ public class OrderServiceImpl implements OrderService {
             return -1;
         else
             return orderDao.saveOrder(order);
+    }
+
+    @Override
+    public Order getOrderById(int id) {
+        return orderDao.getOrderById(id);
+    }
+
+    @Override
+    public Order updateOrder(Order order) {
+        return orderDao.updateOrder(order);
+    }
+
+    @Override
+    public void softDeleteOrderById(int id) {
+        Order temp = orderDao.getOrderById(id);
+        orderDao.softDeleteOrder(temp);
+    }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderDao.getAllOrdersList();
     }
 }

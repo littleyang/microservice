@@ -3,6 +3,8 @@ package com.micro.service.repository.mapper;
 import com.micro.service.model.order.Order;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface OrderMapper {
     /**
@@ -63,4 +65,8 @@ public interface OrderMapper {
 
 
     int deleteOrderByIdSofted(Order record);
+
+    List<Order> getAllOrders();
+
+    int insertAndSelectId(Order order);
 }
