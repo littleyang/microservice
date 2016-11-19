@@ -24,7 +24,20 @@ public class OrderController {
 
     @RequestMapping(value = "/orders/{id}" , method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity getOrderById(@PathVariable("id") int id){
+    public Order getOrderById(@PathVariable("id") int id){
+        return orderService.getOrderById(id);
+    }
+
+
+    @RequestMapping(value = "/orders" , method = RequestMethod.GET)
+    @ResponseBody
+    public List<Order> getOrders(){
+        return orderService.getAllOrders();
+    }
+
+    @RequestMapping(value = "/rest/orders/{id}" , method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity getOrderByIdRest(@PathVariable("id") int id){
         Order result = null;
         if(id>0){
             return new ResponseEntity(HttpStatus.NOT_FOUND);
@@ -35,14 +48,15 @@ public class OrderController {
     }
 
 
-    @RequestMapping(value = "/orders" , method = RequestMethod.GET)
+    @RequestMapping(value = "/rest/orders" , method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity getOrders(){
+    public ResponseEntity getOrdersRest(){
         List<Order> orders = orderService.getAllOrders();
         if(orders.size()>0){
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(orders, HttpStatus.OK);
     }
+
 
 }
