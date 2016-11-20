@@ -4,8 +4,10 @@ import com.micro.service.model.order.Order;
 import com.micro.service.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -34,29 +36,5 @@ public class OrderController {
     public List<Order> getOrders(){
         return orderService.getAllOrders();
     }
-
-    @RequestMapping(value = "/rest/orders/{id}" , method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity getOrderByIdRest(@PathVariable("id") int id){
-        Order result = null;
-        if(id>0){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }else{
-            result = orderService.getOrderById(id);
-        }
-        return new ResponseEntity(result, HttpStatus.OK);
-    }
-
-
-    @RequestMapping(value = "/rest/orders" , method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity getOrdersRest(){
-        List<Order> orders = orderService.getAllOrders();
-        if(orders.size()>0){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(orders, HttpStatus.OK);
-    }
-
 
 }

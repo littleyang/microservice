@@ -9,6 +9,7 @@
 //import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 //import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 //import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+//import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 //import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 //
 //import java.util.List;
@@ -21,7 +22,6 @@
 // */
 //
 //@Configuration
-//@EnableWebMvc
 //public class WebConfig extends WebMvcConfigurerAdapter {
 //
 //    @Override
@@ -38,14 +38,10 @@
 //    }
 //
 //
-//    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-//        converters.add(mappingJackson2HttpMessageConverter());
-//    }
-//
-//    @Bean
-//    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
-//        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-//        converter.setObjectMapper(new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false));
-//        return converter;
+//    @Override
+//    public void configurePathMatch(PathMatchConfigurer configurer) {
+//        super.configurePathMatch(configurer);
+//        configurer.setUseRegisteredSuffixPatternMatch(false);
+//        configurer.setUseSuffixPatternMatch(false);
 //    }
 //}
