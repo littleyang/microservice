@@ -56,4 +56,9 @@ public class OrderDaoImpl implements OrderDao {
         return orderMapper.getAllOrders();
     }
 
+    @Override
+    public List<Order> getMemberOrdersByMemberId(int memberId) {
+        return orderMapper.getMemberOrdersByMemberId(memberId);
+    }
+
 }

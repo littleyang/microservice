@@ -27,4 +27,6 @@ public interface OrderDao {
 
     public List<Order> getAllOrdersList();
 
+    public List<Order> getMemberOrdersByMemberId(int memberId);
+
 }

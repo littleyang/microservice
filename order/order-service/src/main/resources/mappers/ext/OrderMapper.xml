@@ -105,4 +105,9 @@
     </trim>
   </insert>
 
+  <select id="getMemberOrdersByMemberId"  resultMap="extendResultMapWithBLOBs" parameterType="java.lang.Integer">
+    SELECT <include refid="Select_Column_List"/>
+    FROM `order` WHERE member_id = #{memeberId,jdbcType=INTEGER} and deleted = 0
+  </select>
+
 </mapper>

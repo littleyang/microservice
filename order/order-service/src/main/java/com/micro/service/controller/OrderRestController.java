@@ -49,4 +49,13 @@ public class OrderRestController {
         return new ResponseEntity(orders, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/rest/member/{id}/orders", method = RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Order>> getMemberOrdersRest(@PathVariable("id") int memberId){
+        List<Order> orders = orderService.getMemberOrdersByMemberId(memberId);
+        if(orders.size()==0){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(orders, HttpStatus.OK);
+    }
+
 }

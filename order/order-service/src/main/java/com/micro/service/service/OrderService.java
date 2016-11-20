@@ -23,4 +23,6 @@ public interface OrderService {
 
     public List<Order> getAllOrders();
 
+    public List<Order> getMemberOrdersByMemberId(int memberId);
+
 }
