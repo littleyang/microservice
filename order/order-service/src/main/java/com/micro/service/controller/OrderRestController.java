@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @RestController
-public class RestOOController {
+public class OrderRestController {
 
     @Autowired
     private OrderService orderService;
