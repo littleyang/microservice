@@ -25,6 +25,7 @@
 		<project.order.api.version>1.0.0-SNAPSHOT</project.order.api.version>
 	</properties>
 
+
 	<dependencies>
 
 		<!-- api settings -->
@@ -46,7 +47,7 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
 
 		<dependency>
