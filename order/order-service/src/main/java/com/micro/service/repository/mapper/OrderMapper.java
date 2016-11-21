@@ -69,4 +69,6 @@ public interface OrderMapper {
     List<Order> getAllOrders();
 
     int insertAndSelectId(Order order);
+
+    List<Order> getMemberOrdersByMemberId(int memeberId);
 }

@@ -83,5 +83,12 @@ public class OrderDaoTest {
 
     }
 
+    @Test
+    public void testGetMemberOrders(){
+        int memberId = 100001;
+        List<Order> memeberOrders = orderDao.getMemberOrdersByMemberId(memberId);
+        System.out.println(memeberOrders.size());
+        Assert.assertTrue("member 100001 orders should >0 ", memeberOrders.size()>0);
+    }
 
 }
