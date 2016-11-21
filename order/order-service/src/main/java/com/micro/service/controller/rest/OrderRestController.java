@@ -1,4 +1,4 @@
-package com.micro.service.controller;
+package com.micro.service.controller.rest;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.micro.service.model.order.Order;
