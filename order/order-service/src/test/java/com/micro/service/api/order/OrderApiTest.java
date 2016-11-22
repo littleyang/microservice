@@ -1,5 +1,7 @@
 package com.micro.service.api.order;
 
+import com.micro.service.api.MemberApiService;
+import com.micro.service.api.OrderApiService;
 import com.micro.service.member.MemberInfoClient;
 import com.micro.service.order.api.OrderFacadeClient;
 import com.micro.service.order.dto.OrderDto;
@@ -30,19 +32,35 @@ import java.util.List;
 @EnableHystrix
 public class OrderApiTest {
 
+    @Test
+    public void contextLoads() {
+    }
+
+//    @Autowired
+//    private OrderFacadeClient orderFacadeClient;
+
     @Autowired
-    private OrderFacadeClient orderFacadeClient;
+    private OrderApiService orderApiService;
+
+    @Autowired
+    private MemberApiService memberApiService;
 
     @Test
     public void testOrderApiGetOrderById(){
         int  orderId = 13;
-        OrderDto orderDto =  orderFacadeClient.getOrderById(orderId);
+        OrderDto orderDto =  orderApiService.getOrderById(orderId);
         System.out.println(orderDto);
     }
 
+//    @Test
+//    public void testOrderApiGetOrders(){
+//        List<OrderDto> orderDto =  orderFacadeClient.getOrders();
+//        System.out.println(orderDto);
+//    }
+
+
     @Test
-    public void testOrderApiGetOrders(){
-        List<OrderDto> orderDto =  orderFacadeClient.getOrders();
-        System.out.println(orderDto);
+    public void testGetAllMembers(){
+        System.out.println(memberApiService.getAllMemebers());
     }
 }

@@ -27,10 +27,11 @@
 	<dependencies>
 
 		<!-- api settings -->
+
 		<dependency>
 			<groupId>com.micro.service.member</groupId>
-			<artifactId>member-api</artifactId>
-			<version>${project.member.api.version}</version>
+			<artifactId>member-sal</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

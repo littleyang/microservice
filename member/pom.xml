@@ -17,6 +17,7 @@
 	<modules>
 		<module>member-service</module>
 		<module>member-api</module>
+		<module>member-sal</module>
 	</modules>
 
 	<name>member</name>
