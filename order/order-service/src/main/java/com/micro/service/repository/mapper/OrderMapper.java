@@ -1,6 +1,6 @@
 package com.micro.service.repository.mapper;
 
-import com.micro.service.model.order.Order;
+import com.micro.service.order.model.order.Order;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
