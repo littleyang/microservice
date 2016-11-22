@@ -1,6 +1,6 @@
 package com.micro.service.service;
 
-import com.micro.service.model.order.Order;
+import com.micro.service.order.model.order.Order;
 
 import java.util.List;
 

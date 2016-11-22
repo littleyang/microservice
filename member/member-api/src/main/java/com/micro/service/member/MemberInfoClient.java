@@ -1,5 +1,6 @@
 package com.micro.service.member;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public interface MemberInfoClient {
 
     @HystrixCommand(ignoreExceptions=Exception.class)
     @RequestMapping(method = RequestMethod.GET,value = GET_ALL_MEMBERS_URL)
+    @HystrixProperty(name = "hystrix.command.default.execution.timeout.enabled", value = "false")
     public String getAllMembers();
 
 }

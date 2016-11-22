@@ -1,4 +1,4 @@
-package com.micro.service.model.order;
+package com.micro.service.order.model.order;
 
 import java.util.Date;
 
