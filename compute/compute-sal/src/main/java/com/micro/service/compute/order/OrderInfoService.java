@@ -23,4 +23,8 @@ public class OrderInfoService {
     public List<OrderDto> getAllOrders(){
         return  orderFacadeClient.getOrders();
     }
+
+    public OrderDto getOrderById(int id){
+        return orderFacadeClient.getOrderById(id);
+    }
 }

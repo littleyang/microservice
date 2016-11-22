@@ -23,6 +23,6 @@ public class OrderInfoServiceTest {
 
     @Test
     public void testGetAllOrders(){
-        System.out.println(orderInfoService.getAllOrders());
+        System.out.println(orderInfoService.getAllOrders().size());
     }
 }

@@ -12,10 +12,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Member;
@@ -70,12 +67,20 @@ public class ComputeController {
          return this.memberClient.getAllUsers();
      }
 
-    @HystrixCommand(fallbackMethod = "addServiceFallback")
     @RequestMapping("/orders/all")
+    @ResponseBody
     public List<OrderDto> getAllOrders(){
 
        // return restTemplate.getForEntity("http://ORDER/orders",String.class).getBody();
         return orderInfoService.getAllOrders();
+    }
+
+    @RequestMapping("/orders/{id}")
+    @ResponseBody
+    public OrderDto getAllOrderById(@PathVariable("id") int id){
+
+        // return restTemplate.getForEntity("http://ORDER/orders",String.class).getBody();
+        return orderInfoService.getOrderById(id);
     }
 
 
