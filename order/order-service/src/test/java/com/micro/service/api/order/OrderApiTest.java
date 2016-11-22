@@ -13,8 +13,8 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.lang.reflect.Member;
 import java.util.List;
+
 
 /**
  * @description:
@@ -30,31 +30,19 @@ import java.util.List;
 @EnableHystrix
 public class OrderApiTest {
 
-    @Test
-    public void contextLoads() {
-    }
-
     @Autowired
     private OrderFacadeClient orderFacadeClient;
-
-    @Autowired
-    private MemberInfoClient memberInfoClient;
 
     @Test
     public void testOrderApiGetOrderById(){
         int  orderId = 13;
-        String orderDto =  orderFacadeClient.getOrderById(orderId);
+        OrderDto orderDto =  orderFacadeClient.getOrderById(orderId);
         System.out.println(orderDto);
     }
 
     @Test
     public void testOrderApiGetOrders(){
-        String orderDto =  orderFacadeClient.getOrders();
+        List<OrderDto> orderDto =  orderFacadeClient.getOrders();
         System.out.println(orderDto);
-    }
-
-    @Test
-    public void testGetAllMemeberInfo(){
-        System.out.println(memberInfoClient.getAllMembers());
     }
 }

@@ -29,12 +29,12 @@ public interface OrderFacadeClient {
     @HystrixCommand(ignoreExceptions=Exception.class)
     @RequestMapping(method = RequestMethod.GET,value = GET_ORDER_BY_ID_REST)
     @HystrixProperty(name = "hystrix.command.default.execution.timeout.enabled", value = "false")
-    public String getOrderById(@RequestParam("id") int id);
+    public OrderDto getOrderById(@RequestParam("id") int id);
 
 
     @HystrixCommand(ignoreExceptions=Exception.class)
     @RequestMapping(method = RequestMethod.GET,value = GET_ORDERS)
     @HystrixProperty(name = "hystrix.command.default.execution.timeout.enabled", value = "false")
-    public String getOrders();
+    public List<OrderDto> getOrders();
 
 }
