@@ -37,15 +37,16 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.micro.service.compute</groupId>
-			<artifactId>compute-api</artifactId>
-			<version>${project.compute.api.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.micro.service.member</groupId>
 			<artifactId>member-api</artifactId>
 			<version>${project.member.api.version}</version>
+		</dependency>
+
+		<!--
+		<dependency>
+			<groupId>com.micro.service.compute</groupId>
+			<artifactId>compute-api</artifactId>
+			<version>${project.compute.api.version}</version>
 		</dependency>
 
 		<dependency>
@@ -53,6 +54,7 @@
 			<artifactId>coupon-api</artifactId>
 			<version>${project.coupon.api.version}</version>
 		</dependency>
+		-->
 
 	</dependencies>
 

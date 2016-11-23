@@ -1,6 +1,8 @@
 package com.micro.service.web;
 
+import com.micro.service.compute.order.OrderInfoService;
 import com.micro.service.member.consumer.MemberClient;
+import com.micro.service.order.dto.OrderDto;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +12,11 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Member;
+import java.util.List;
 
 @RefreshScope
 @RestController
@@ -36,6 +36,9 @@ public class ComputeController {
 
     @Autowired
     private MemberClient memberClient;
+
+    @Autowired
+    private OrderInfoService orderInfoService;
 
     @RequestMapping(value = "/add" ,method = RequestMethod.GET)
     public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
@@ -63,6 +66,22 @@ public class ComputeController {
          logger.info("get all users!!!!!!");
          return this.memberClient.getAllUsers();
      }
+
+    @RequestMapping("/orders/all")
+    @ResponseBody
+    public List<OrderDto> getAllOrders(){
+
+       // return restTemplate.getForEntity("http://ORDER/orders",String.class).getBody();
+        return orderInfoService.getAllOrders();
+    }
+
+    @RequestMapping("/orders/{id}")
+    @ResponseBody
+    public OrderDto getAllOrderById(@PathVariable("id") int id){
+
+        // return restTemplate.getForEntity("http://ORDER/orders",String.class).getBody();
+        return orderInfoService.getOrderById(id);
+    }
 
 
     public String addServiceFallback() {

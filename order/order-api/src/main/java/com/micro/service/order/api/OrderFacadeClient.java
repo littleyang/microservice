@@ -5,6 +5,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,12 +30,12 @@ public interface OrderFacadeClient {
     @HystrixCommand(ignoreExceptions=Exception.class)
     @RequestMapping(method = RequestMethod.GET,value = GET_ORDER_BY_ID_REST)
     @HystrixProperty(name = "hystrix.command.default.execution.timeout.enabled", value = "false")
-    public String getOrderById(@RequestParam("id") int id);
+    public OrderDto getOrderById(@PathVariable("id") int id);
 
 
     @HystrixCommand(ignoreExceptions=Exception.class)
     @RequestMapping(method = RequestMethod.GET,value = GET_ORDERS)
     @HystrixProperty(name = "hystrix.command.default.execution.timeout.enabled", value = "false")
-    public String getOrders();
+    public List<OrderDto> getOrders();
 
 }
