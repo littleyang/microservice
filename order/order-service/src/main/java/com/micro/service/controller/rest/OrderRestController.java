@@ -18,18 +18,19 @@ import java.util.List;
  */
 
 @RestController
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class OrderRestController {
 
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "/rest/{id}",method = RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/rest/{id}",method = RequestMethod.GET)
     public ResponseEntity<Order> getOrderByIdRestddd(@PathVariable("id") int id){
         Order result = orderService.getOrderById(id);
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/rest/orders/{id}", method = RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/rest/orders/{id}", method = RequestMethod.GET)
     public ResponseEntity<Order> getOrderByIdRest(@PathVariable("id") int id){
         Order result = orderService.getOrderById(id);
         if(null==result){
@@ -39,7 +40,7 @@ public class OrderRestController {
     }
 
 
-    @RequestMapping(value = "/rest/orders", method = RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/rest/orders", method = RequestMethod.GET)
     public ResponseEntity<List<Order>> getOrdersRest(){
         List<Order> orders = orderService.getAllOrders();
         if(orders.size()==0){
@@ -48,7 +49,7 @@ public class OrderRestController {
         return new ResponseEntity(orders, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/rest/member/{id}/orders", method = RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/rest/member/{id}/orders", method = RequestMethod.GET)
     public ResponseEntity<List<Order>> getMemberOrdersRest(@PathVariable("id") int memberId){
         List<Order> orders = orderService.getMemberOrdersByMemberId(memberId);
         if(orders.size()==0){

@@ -21,17 +21,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<project.coupon.api.version>1.0.0-SNAPSHOT</project.coupon.api.version>
+
 	</properties>
 
 	<dependencies>
 
-		<!-- api settings -->
-
 		<dependency>
 			<groupId>com.micro.service.coupon</groupId>
-			<artifactId>coupon-api</artifactId>
-			<version>${project.coupon.api.version}</version>
+			<artifactId>coupon-sal</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -44,11 +42,7 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 	</dependencies>
 
 	<build>
