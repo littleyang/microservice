@@ -11,10 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@EnableDiscoveryClient
-@EnableFeignClients
-@EnableCircuitBreaker
-@EnableHystrix
 public class BootWarApplicationTests {
 
 	@Test

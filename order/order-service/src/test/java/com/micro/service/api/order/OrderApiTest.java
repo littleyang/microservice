@@ -1,21 +1,14 @@
 package com.micro.service.api.order;
 
-import com.micro.service.api.MemberApiService;
-import com.micro.service.api.OrderApiService;
+import com.micro.service.BootWarApplicationTests;
 import com.micro.service.member.MemberInfoClient;
-import com.micro.service.order.api.OrderFacadeClient;
-import com.micro.service.order.dto.OrderDto;
+import com.micro.service.order.api.ApiDDDDD;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
 
 
 /**
@@ -24,43 +17,25 @@ import java.util.List;
  * @version: 1.0.0
  * @since: 2016-11-22 11:12 AM
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
 @EnableDiscoveryClient
+//@EnableAutoConfiguration
 @EnableFeignClients
 @EnableCircuitBreaker
 @EnableHystrix
-public class OrderApiTest {
-
-    @Test
-    public void contextLoads() {
-    }
-
-//    @Autowired
-//    private OrderFacadeClient orderFacadeClient;
+public class OrderApiTest extends BootWarApplicationTests {
 
     @Autowired
-    private OrderApiService orderApiService;
-
-    @Autowired
-    private MemberApiService memberApiService;
+    private MemberInfoClient memberInfoClient;
 
     @Test
-    public void testOrderApiGetOrderById(){
-        int  orderId = 13;
-        OrderDto orderDto =  orderApiService.getOrderById(orderId);
-        System.out.println(orderDto);
+    public void testMeme(){
+
+        System.out.println(memberInfoClient.getAllMembers());
     }
 
-//    @Test
-//    public void testOrderApiGetOrders(){
-//        List<OrderDto> orderDto =  orderFacadeClient.getOrders();
-//        System.out.println(orderDto);
-//    }
-
-
     @Test
-    public void testGetAllMembers(){
-        System.out.println(memberApiService.getAllMemebers());
+    public  void  testApiDDDDD(){
+        String name = "wangdu";
+        System.out.println(new ApiDDDDD().syaHello(name));
     }
 }
