@@ -1,6 +1,7 @@
 package com.micro.service.api;
 
 import com.micro.service.base.ApplicationBaseTest;
+import com.micro.service.order.api.OrderFacadeClient;
 import com.micro.service.service.MemberInfoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,9 +35,17 @@ public class MemberInfoApiTest{
     @Autowired
     private MemberInfoService memberInfoService;
 
+    @Autowired
+    private OrderFacadeClient orderFacadeClient;
+
     @Test
     public void testGetAllMembers(){
         System.out.println(memberInfoService.getAllMemebers());
+    }
+
+    @Test
+    public void testGetOrderById(){
+        System.out.println(orderFacadeClient.getOrderById(13).getAddress());
     }
 
 }
