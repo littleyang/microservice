@@ -3,12 +3,16 @@ package com.micro.service.api.order;
 import com.micro.service.BootWarApplicationTests;
 import com.micro.service.member.MemberInfoClient;
 import com.micro.service.order.api.ApiDDDDD;
+import com.micro.service.order.api.OrderFacadeClient;
+import com.micro.service.order.dto.OrderDto;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+
+import java.util.List;
 
 
 /**
@@ -27,6 +31,9 @@ public class OrderApiTest extends BootWarApplicationTests {
     @Autowired
     private MemberInfoClient memberInfoClient;
 
+    @Autowired
+    private OrderFacadeClient orderFacadeClient;
+
     @Test
     public void testMeme(){
 
@@ -38,4 +45,18 @@ public class OrderApiTest extends BootWarApplicationTests {
         String name = "wangdu";
         System.out.println(new ApiDDDDD().syaHello(name));
     }
+
+    @Test
+    public  void testGetOrderById(){
+        int id = 13;
+        OrderDto orderDto = orderFacadeClient.getOrderById(id);
+        System.out.println(orderDto.getAddress());
+    }
+
+    @Test
+    public  void testGetAllOrders(){
+        List<OrderDto> orders = orderFacadeClient.getOrders();
+        System.out.println(orders.size());
+    }
+
 }
