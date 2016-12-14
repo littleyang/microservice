@@ -1,5 +1,7 @@
 package com.micro.service.coupon.repository.jdbc;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -7,5 +9,5 @@ package com.micro.service.coupon.repository.jdbc;
  * @since: 2016-11-23 3:02 PM
  */
 
-public class CouponRepositoryJdbc {
+public interface CouponRepositoryJdbc {
 }

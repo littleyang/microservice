@@ -1,4 +1,4 @@
-package com.micro.service.repository.jdbc;
+package com.micro.service.repository.jdbc.rowmapper;
 
 /**
  * @description:
