@@ -1,8 +1,13 @@
 package com.micro.service.coupon.controller;
 
+import com.micro.service.coupon.dto.CouponDto;
 import com.micro.service.coupon.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,6 +25,15 @@ public class CouponController {
     private CouponService couponService;
 
 
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public String couponIndex(){
+        return "hello, world!!!";
+    }
 
 
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    public ResponseEntity<CouponDto> getCouponById(@PathVariable("id") int id){
+        CouponDto result = couponService.getCouponById(id);
+        return new ResponseEntity(result, HttpStatus.OK);
+    }
 }
