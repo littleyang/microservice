@@ -46,6 +46,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>coupon-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

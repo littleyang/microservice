@@ -18,7 +18,7 @@ public class CouponDto {
     private Integer amount;
     private int status;
     private Date expireDate;
-    private boolean usedDate;
+    private Date usedDate;
     private Date created;
     private Date updated;
     private String description;
@@ -79,11 +79,11 @@ public class CouponDto {
         this.expireDate = expireDate;
     }
 
-    public boolean isUsedDate() {
+    public Date isUsedDate() {
         return usedDate;
     }
 
-    public void setUsedDate(boolean usedDate) {
+    public void setUsedDate(Date usedDate) {
         this.usedDate = usedDate;
     }
 
