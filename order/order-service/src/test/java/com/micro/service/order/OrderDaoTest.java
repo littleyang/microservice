@@ -1,7 +1,7 @@
 package com.micro.service.order;
 
 import com.micro.service.dao.order.OrderDao;
-import com.micro.service.order.model.order.Order;
+import com.micro.service.model.order.Order;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

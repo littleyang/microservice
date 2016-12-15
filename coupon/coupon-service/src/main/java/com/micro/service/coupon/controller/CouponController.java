@@ -4,11 +4,9 @@ import com.micro.service.coupon.dto.CouponDto;
 import com.micro.service.coupon.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @description:
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/coupon")
+@RequestMapping(value = "/coupon",produces = MediaType.APPLICATION_JSON_VALUE)
 public class CouponController {
 
     @Autowired
@@ -26,12 +24,14 @@ public class CouponController {
 
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
+    @ResponseBody
     public String couponIndex(){
         return "hello, world!!!";
     }
 
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @ResponseBody
     public ResponseEntity<CouponDto> getCouponById(@PathVariable("id") int id){
         CouponDto result = couponService.getCouponById(id);
         return new ResponseEntity(result, HttpStatus.OK);
