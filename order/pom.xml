@@ -15,7 +15,7 @@
 		<module>order-service</module>
 		<module>order-api</module>
 		<module>order-sal</module>
-	</modules>
+    </modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -123,6 +123,13 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- common utils settings -->
+		<dependency>
+			<groupId>com.micro.service</groupId>
+			<artifactId>common-utils</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
