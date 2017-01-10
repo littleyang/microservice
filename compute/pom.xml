@@ -46,6 +46,13 @@
 
 	<dependencies>
 
+		<!-- common utils settings -->
+		<dependency>
+			<groupId>com.micro.service</groupId>
+			<artifactId>common-utils</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
 		<!-- api sal seetings -->
 		<dependency>
 			<groupId>com.micro.service.compute</groupId>
