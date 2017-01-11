@@ -1,0 +1,1 @@
+alter table `order` add column `member_id` BIGINT(64) NOT NULL  COMMENT '用户ID' AFTER `id`;
