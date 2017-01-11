@@ -1,0 +1,96 @@
+# spring boot settings
+spring:
+  application:
+    name: routes
+server:
+  port: 8892
+#server:
+#  address=localhost
+
+# route本身注册服务
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+eureka:
+  instance:
+    hostname: localhost
+
+
+zuul:
+  ignoredServices: *
+
+## 通过url的方式配置路由
+#zuul:
+#  #service will be mapped under the /api URI
+#  prefix: /api
+#  routes:
+#    # compute service 路由配置
+#    compute:
+#      path: /compute/**
+#      url: http://localhost:8890/compute/
+#
+#    # member service 路由配置
+#    member:
+#      path: /member/**
+#      url: http://localhost:8889/member/
+
+
+# 通过service id 配置路由
+zuul:
+  #service will be mapped under the /api URI
+  prefix: /api
+  routes:
+    oauth:
+      path: /oauth/*
+      serviceId: OAUTH
+
+    # compute service 路由配置
+    compute:
+      path: /compute/**
+      serviceId: COMPUTE
+
+    # member service 路由配置
+    member:
+      path: /member/**
+      serviceId: MEMBER
+
+    order:
+      path: /order/*
+      serviceId: ORDER
+
+    coupon:
+      path: /coupon/*
+      serviceId: COUPONS
+
+    promos:
+      path: /promos/*
+      serviceId: PROMOS
+
+
+#Disable Hystrix timeout for a single service
+hystrix:
+  command:
+    compute:
+      execution:
+        timeout:
+          enabled: false
+    member:
+      execution:
+        timeout:
+          enabled: false
+#Increase the Hystrix timeout to 60s (globally)
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=6000
+
+#hystrix.command.default.execution.timeout.enabled=false
+#hystrix.command.default.execution.isolation.strategy=THREAD
+#zuul.SendResponseFilter.post.disable=true
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=60000
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
