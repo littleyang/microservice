@@ -30,8 +30,8 @@ public class UserRowMapper implements RowMapper<User>{
         user.setEmail(rs.getString("email"));
         user.setMobile(rs.getString("mobile"));
         user.setArchived(rs.getBoolean("archived"));
-        user.setCreated(rs.getTimestamp("created").toLocalDateTime());
-        user.setUpdated(rs.getTimestamp("updated").toLocalDateTime());
+        user.setCreated(rs.getDate("created"));
+        user.setUpdated(rs.getDate("updated"));
 
         return user;
     }

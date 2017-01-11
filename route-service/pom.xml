@@ -79,9 +79,8 @@
 		</dependency>
 	</dependencies>
 
-
-
 	<build>
+		<finalName>routes-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
