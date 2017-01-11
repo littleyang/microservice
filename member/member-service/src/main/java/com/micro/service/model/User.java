@@ -3,6 +3,7 @@ package com.micro.service.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @description:
@@ -41,10 +42,10 @@ public class User implements Serializable{
     private boolean archived = false;
 
     @Column(name="created")
-    private LocalDateTime created;
+    private Date created;
 
     @Column(name="updated")
-    private LocalDateTime updated;
+    private Date updated;
 
     public int getId() {
         return id;
@@ -110,19 +111,19 @@ public class User implements Serializable{
         this.archived = archived;
     }
 
-    public LocalDateTime getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
-    public LocalDateTime getUpdated() {
+    public Date getUpdated() {
         return updated;
     }
 
-    public void setUpdated(LocalDateTime updated) {
+    public void setUpdated(Date updated) {
         this.updated = updated;
     }
 

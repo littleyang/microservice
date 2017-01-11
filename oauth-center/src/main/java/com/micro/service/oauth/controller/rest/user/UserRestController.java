@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,11 @@ public class UserRestController extends BaseController {
     public User getCurrentLoginUser(HttpServletRequest request){
         User currentUser = getCurrentUser(request);
         return currentUser;
+    }
+
+    @RequestMapping(value = "/me", method = RequestMethod.GET)
+    public Principal getCurrentLoggedInUser(HttpServletRequest request) {
+        return request.getUserPrincipal();
     }
 
 }
