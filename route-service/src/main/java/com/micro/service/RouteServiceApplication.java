@@ -18,9 +18,9 @@ import org.springframework.stereotype.Controller;
 @SpringBootApplication
 @EnableZuulProxy
 @Controller
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
+//@Configuration
+//@ComponentScan
+//@EnableAutoConfiguration
 @EnableEurekaClient
 @EnableOAuth2Sso
 @EnableResourceServer
