@@ -2,7 +2,6 @@ package com.micro.service.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**

@@ -33,8 +33,8 @@ public class UserRowMapper implements RowMapper<User> {
         user.setPhone(rs.getString("phone"));
         user.setMobile(rs.getString("mobile"));
         user.setArchived(rs.getBoolean("archived"));
-        user.setCreated(rs.getDate("created"));
-        user.setUpdated(rs.getDate("updated"));
+        user.setCreated(rs.getTimestamp("created").toLocalDateTime());
+        user.setUpdated(rs.getTimestamp("updated").toLocalDateTime());
 
         return user;
     }
