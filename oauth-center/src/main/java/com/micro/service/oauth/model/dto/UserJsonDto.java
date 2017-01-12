@@ -39,8 +39,8 @@ public class UserJsonDto {
         this.mobile = user.getMobile();
         this.fullname = user.getFullname();
         this.nickname = user.getNickname();
-        this.created = user.getCreated().toString();
-        this.updated = user.getUpdated().toString();
+        this.created = DateUtils.toDateTime(user.getCreated());
+        this.updated = DateUtils.toDateTime(user.getUpdated());
 
     }
 

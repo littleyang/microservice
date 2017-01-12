@@ -57,10 +57,10 @@ public class User implements Serializable{
     private boolean archived = false;
 
     @Column(name="created")
-    private Date created;
+    private LocalDateTime created;
 
     @Column(name="updated")
-    private Date updated;
+    private LocalDateTime updated;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority",
@@ -181,19 +181,19 @@ public class User implements Serializable{
         this.guid = guid;
     }
 
-    public Date getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public Date getUpdated() {
+    public LocalDateTime getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
 
