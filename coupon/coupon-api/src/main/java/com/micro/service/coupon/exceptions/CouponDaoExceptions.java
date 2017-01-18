@@ -1,5 +1,7 @@
 package com.micro.service.coupon.exceptions;
 
+import com.micro.service.exception.DaoExceptions;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -7,5 +9,5 @@ package com.micro.service.coupon.exceptions;
  * @since: 2017-01-18 4:30 PM
  */
 
-public class CouponDaoExceptions{
+public class CouponDaoExceptions extends DaoExceptions{
 }

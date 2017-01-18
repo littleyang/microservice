@@ -7,5 +7,5 @@ package com.micro.service.exception;
  * @since: 2017-01-18 4:28 PM
  */
 
-public class DaoExceptions extends Exception{
+public class DaoExceptions extends Exception {
 }
