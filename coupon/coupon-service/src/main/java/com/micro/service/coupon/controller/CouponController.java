@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -34,6 +36,21 @@ public class CouponController {
     @ResponseBody
     public ResponseEntity<CouponDto> getCouponById(@PathVariable("id") int id){
         CouponDto result = couponService.getCouponById(id);
-        return new ResponseEntity(result, HttpStatus.OK);
+        if(null!=result){
+            return new ResponseEntity(result, HttpStatus.OK);
+        }else{
+            return new ResponseEntity(null, HttpStatus.OK);
+        }
+
+    }
+
+    @RequestMapping(value = "/all",method = RequestMethod.GET)
+    public ResponseEntity<List<CouponDto>> getAllAviableCoupons(){
+        List<CouponDto> results = couponService.getAllAvaiableCoupons();
+        if(results.size()>0){
+            return new ResponseEntity(results, HttpStatus.OK);
+        }else{
+            return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+        }
     }
 }

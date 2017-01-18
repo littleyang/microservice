@@ -41,4 +41,12 @@
     description
   </sql>
 
+  <select id="getAllAviableCoupons" resultMap="extendResultMapWithBLOBs">
+    select
+    <include refid="Ext_Base_Column_List" />
+    ,
+    <include refid="Ext_Blob_Column_List" />
+    from coupon where deleted = 0
+  </select>
+
 </mapper>
