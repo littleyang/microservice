@@ -4,6 +4,8 @@ package com.micro.service.coupon.repository.mapper;
 import com.micro.service.coupon.model.Coupon;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface CouponMapper {
     /**
@@ -61,4 +63,11 @@ public interface CouponMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Coupon record);
+
+
+    /**
+     * 获取所有的优惠码信息
+     * @return
+     */
+    List<Coupon> getAllAviableCoupons();
 }

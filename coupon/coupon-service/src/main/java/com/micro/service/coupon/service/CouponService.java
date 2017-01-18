@@ -2,6 +2,8 @@ package com.micro.service.coupon.service;
 
 import com.micro.service.coupon.dto.CouponDto;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -12,4 +14,6 @@ import com.micro.service.coupon.dto.CouponDto;
 public interface CouponService {
 
     public CouponDto getCouponById(Integer id);
+
+    public List<CouponDto> getAllAvaiableCoupons();
 }

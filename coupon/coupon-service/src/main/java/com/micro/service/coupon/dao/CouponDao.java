@@ -3,6 +3,8 @@ package com.micro.service.coupon.dao;
 
 import com.micro.service.coupon.model.Coupon;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: yang.zhou
@@ -13,5 +15,7 @@ import com.micro.service.coupon.model.Coupon;
 public interface CouponDao {
 
     public Coupon getCouponById(Integer id);
+
+    public List<Coupon> getAllAviableCoupons();
 
 }

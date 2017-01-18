@@ -2,10 +2,13 @@ package com.micro.service.coupon.service.impl;
 
 import com.micro.service.coupon.dao.CouponDao;
 import com.micro.service.coupon.dto.CouponDto;
+import com.micro.service.coupon.model.Coupon;
 import com.micro.service.coupon.service.CouponService;
 import com.micro.service.coupon.util.BaseConvertor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @description:
@@ -25,5 +28,11 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public CouponDto getCouponById(Integer id) {
         return BaseConvertor.convert(couponDao.getCouponById(id),CouponDto.class);
+    }
+
+    @Override
+    public List<CouponDto> getAllAvaiableCoupons() {
+        List<Coupon> coupons = couponDao.getAllAviableCoupons();
+        return BaseConvertor.convertList(coupons,CouponDto.class);
     }
 }
